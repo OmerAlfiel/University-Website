@@ -46,35 +46,35 @@ export default function HomePage() {
     { number: "15", label: t("yearsOfExcellence"), icon: Star },
   ]
 
-  const academicHighlights = [
-    {
-      title: "Engineering Excellence",
-      titleAr: "التميز الهندسي",
-      description: "Computer Science, Electrical, Architecture, and Biomedical Engineering programs",
-      descriptionAr: "برامج علوم الحاسوب والهندسة الكهربائية والعمارة والهندسة الطبية الحيوية",
-      image: "/placeholder.svg?height=300&width=400",
-      link: "/academics/computer-science",
-      color: "from-blue-500 to-blue-700",
-    },
-    {
-      title: "Health Sciences",
-      titleAr: "العلوم الصحية",
-      description: "Medical Laboratory, Nursing, Physiotherapy, and Public Health programs",
-      descriptionAr: "برامج المختبرات الطبية والتمريض والعلاج الطبيعي والصحة العامة",
-      image: "/placeholder.svg?height=300&width=400",
-      link: "/academics/nursing",
-      color: "from-green-500 to-green-700",
-    },
-    {
-      title: "Business Leadership",
-      titleAr: "القيادة التجارية",
-      description: "MBA, Business Administration, and Economic Sciences programs",
-      descriptionAr: "برامج ماجستير إدارة الأعمال وإدارة الأعمال والعلوم الاقتصادية",
-      image: "/placeholder.svg?height=300&width=400",
-      link: "/academics/business",
-      color: "from-purple-500 to-purple-700",
-    },
-  ]
+const academicHighlights = [
+  {
+    title: "Engineering Excellence",
+    titleAr: "التميز الهندسي",
+    description: "Computer Science, Electrical, Architecture, and Biomedical Engineering programs",
+    descriptionAr: "برامج علوم الحاسوب والهندسة الكهربائية والعمارة والهندسة الطبية الحيوية",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=750&q=80", // Engineering/Computer Science focus
+    link: "/academics/computer-science",
+    color: "from-blue-500 to-blue-700",
+  },
+  {
+    title: "Health Sciences",
+    titleAr: "العلوم الصحية",
+    description: "Medical Laboratory, Nursing, Physiotherapy, and Public Health programs",
+    descriptionAr: "برامج المختبرات الطبية والتمريض والعلاج الطبيعي والصحة العامة",
+    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=750&q=80", // Medical/Health Sciences focus
+    link: "/academics/nursing",
+    color: "from-green-500 to-green-700",
+  },
+  {
+    title: "Business Leadership",
+    titleAr: "القيادة التجارية",
+    description: "MBA, Business Administration, and Economic Sciences programs",
+    descriptionAr: "برامج ماجستير إدارة الأعمال وإدارة الأعمال والعلوم الاقتصادية",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=750&q=80", // Business/Meeting room focus
+    link: "/academics/business",
+    color: "from-purple-500 to-purple-700",
+  },
+]
 
   const newsItems = [
     {
@@ -85,7 +85,7 @@ export default function HomePage() {
         "State-of-the-art artificial intelligence research facility equipped with latest GPU clusters and quantum computing access.",
       excerptAr:
         "مرفق بحوث الذكاء الاصطناعي المتطور مجهز بأحدث مجموعات وحدات معالجة الرسومات والوصول إلى الحوسبة الكمية.",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       category: "Research",
       categoryAr: "بحوث",
     },
@@ -96,7 +96,7 @@ export default function HomePage() {
       excerpt:
         "New collaboration agreement enables student exchange programs and joint research initiatives in biomedical engineering.",
       excerptAr: "اتفاقية تعاون جديدة تمكن برامج تبادل الطلاب ومبادرات البحث المشتركة في الهندسة الطبية الحيوية.",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       category: "Partnership",
       categoryAr: "شراكة",
     },
@@ -107,7 +107,7 @@ export default function HomePage() {
       excerpt:
         "Computer Science team develops breakthrough healthcare app, securing first place in international competition.",
       excerptAr: "فريق علوم الحاسوب يطور تطبيق رعاية صحية رائد، ويحصل على المركز الأول في المسابقة الدولية.",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       category: "Achievement",
       categoryAr: "إنجاز",
     },
@@ -119,7 +119,7 @@ export default function HomePage() {
       <AnimatedSection animation="fade-up">
         <section className="relative w-full py-16 md:py-24 lg:py-32 flex items-center bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-gray-950 dark:via-gray-900 dark:to-blue-950/20">
           <FloatingElements />
-          <div className="absolute inset-0 bg-[url('/placeholder.svg?height=1080&width=1920')] bg-cover bg-center opacity-5"></div>
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80')] bg-cover bg-center opacity-5"></div>
           <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
             <div className="grid gap-8 md:gap-10 lg:grid-cols-[1fr_auto] lg:gap-12 items-center">
               <div className="flex flex-col justify-center space-y-4 sm:space-y-6 md:space-y-8">
@@ -128,7 +128,7 @@ export default function HomePage() {
                     <Globe className="mr-2 h-4 w-4" />
                     {language === "ar" ? "معتمدة دولياً منذ 2009" : "Internationally Accredited Since 2009"}
                   </div>
-                  <h1 className="text-4xl sm:text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl bg-gradient-to-r from-gray-900 via-blue-800 to-blue-600 dark:from-white dark:via-blue-200 dark:to-blue-400 bg-clip-text text-transparent">
+                  <h1 className="text-4xl sm:text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl bg-gradient-to-r from-gray-900 via-blue-800 to-blue-600 dark:from-white dark:via-blue-200 dark:to-blue-400 bg-clip-text text-transparent leading-tight pb-2">
                     {t("welcome")}
                   </h1>
                   <p className="max-w-[600px] text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -158,20 +158,18 @@ export default function HomePage() {
               </div>
               <div className="relative w-full max-w-[500px] mx-auto lg:mx-0">
                 <div className="relative overflow-hidden rounded-3xl shadow-2xl">
-                  <Image
-                    src="/placeholder.svg?height=600&width=800"
-                    alt="Gezira College of Technology Campus"
+                  <video
+                    className="aspect-[4/3] object-cover w-full"
                     width={800}
                     height={600}
-                    className="aspect-[4/3] object-cover w-full"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                  <Button
-                    size="icon"
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 rounded-full bg-white/90 hover:bg-white text-blue-600 shadow-2xl hover:scale-110 transition-all"
+                    poster="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80"
+                    controls
+                    preload="metadata"
                   >
-                    <Play className="h-6 w-6 md:h-8 md:w-8 ml-0.5 md:ml-1" />
-                  </Button>
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                    <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
                 <div className="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 shadow-xl">
                   <div className="flex items-center gap-2 sm:gap-3">
@@ -194,9 +192,10 @@ export default function HomePage() {
 
       {/* Stats Section */}
       <AnimatedSection animation="fade-in" delay={200}>
-        <section className="w-full py-16 sm:py-20 bg-white dark:bg-gray-900 border-y">
-          <div className="container mx-auto px-4 sm:px-6 md:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        <section className="w-screen py-16 sm:py-20 bg-white dark:bg-gray-900 border-y">
+          <div className="w-full px-4 sm:px-6 md:px-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center group">
                   <div className="mx-auto h-14 w-14 sm:h-16 sm:w-16 bg-blue-100 dark:bg-blue-900/20 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -206,11 +205,13 @@ export default function HomePage() {
                   <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium">{stat.label}</div>
                 </div>
               ))}
+              </div>
             </div>
           </div>
         </section>
       </AnimatedSection>
 
+      <div className="flex flex-col items-center w-full">
       {/* Academic Highlights */}
       <AnimatedSection animation="slide-left" delay={400}>
         <section className="py-24 bg-gray-50 dark:bg-gray-900/50">
@@ -231,7 +232,7 @@ export default function HomePage() {
                 >
                   <div className="relative overflow-hidden">
                     <Image
-                      src={highlight.image || "/placeholder.svg"}
+                      src={highlight.image}
                       alt={language === "ar" ? highlight.titleAr : highlight.title}
                       width={400}
                       height={300}
@@ -321,10 +322,10 @@ export default function HomePage() {
                 >
                   <div className="relative overflow-hidden">
                     <Image
-                      src={item.image || "/placeholder.svg"}
+                      src={item.image}
                       alt={language === "ar" ? item.titleAr : item.title}
-                      width={300}
-                      height={200}
+                      width={500}
+                      height={300}
                       className="aspect-[3/2] object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                     <div className="absolute top-4 left-4">
@@ -359,7 +360,7 @@ export default function HomePage() {
         <section className="relative py-24 lg:py-32 overflow-hidden">
           {/* Background with overlay pattern */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 z-0"></div>
-          <div className="absolute inset-0 bg-[url('/placeholder.svg?height=200&width=200')] opacity-10 z-0"></div>
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80')] opacity-10 z-0"></div>
           
           {/* Decorative elements */}
           <div className="absolute top-0 left-0 w-72 h-72 bg-blue-400 rounded-full filter blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2"></div>
@@ -462,6 +463,7 @@ export default function HomePage() {
           </div>
         </section>
       </AnimatedSection>
+      </div>
     </div>
   )
 }

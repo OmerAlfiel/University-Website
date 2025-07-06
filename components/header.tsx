@@ -360,52 +360,69 @@ export function Header() {
               </NavigationMenuItem>
       
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="h-14 px-8 text-base font-semibold rounded-2xl hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:text-blue-600 dark:hover:text-blue-400 data-[state=open]:bg-blue-50 dark:data-[state=open]:bg-blue-950/30">
-                  <span className="flex items-center gap-2">
-                    {t("academics")}
-                    <ChevronDown className="h-4 w-4" />
-                  </span>
+                <NavigationMenuTrigger className="h-14 px-8 text-base font-semibold rounded-2xl hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:text-blue-600 dark:hover:text-blue-400 data-[state=open]:bg-blue-50 dark:data-[state=open]:bg-blue-950/30 data-[state=open]:text-blue-600 dark:data-[state=open]:text-blue-400">
+                  {t("academics")}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="grid gap-8 p-10 w-[1200px] grid-cols-5">
-                    <div className="row-span-4 col-span-1">
+                  <div className="grid gap-6 p-6 w-[95vw] max-w-[1100px] max-h-[80vh] overflow-y-auto lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1">
+                    <div className="lg:row-span-4 lg:col-span-1 md:col-span-3 sm:col-span-1 lg:sticky lg:top-0 lg:self-start">
                       <NavigationMenuLink asChild>
                         <Link
-                          className="flex h-full w-full select-none flex-col justify-end rounded-3xl bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 dark:from-blue-950 dark:via-blue-900 dark:to-blue-800 p-8 no-underline outline-none focus:shadow-xl hover:shadow-2xl"
+                          className="flex h-full w-full select-none flex-col justify-end rounded-3xl bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 dark:from-blue-950 dark:via-blue-900 dark:to-blue-800 p-6 lg:p-8 no-underline outline-none focus:shadow-xl hover:shadow-2xl min-h-[200px]"
                           href="/academics"
                         >
-                          <GraduationCap className="h-16 w-16 text-blue-600 mb-6 relative z-10" />
-                          <div className="mb-3 mt-4 text-2xl font-bold text-gray-900 dark:text-white relative z-10">
+                          <GraduationCap className="h-12 w-12 lg:h-16 lg:w-16 text-blue-600 mb-4 lg:mb-6 relative z-10" />
+                          <div className="mb-2 lg:mb-3 mt-2 lg:mt-4 text-xl lg:text-2xl font-bold text-gray-900 dark:text-white relative z-10">
                             {t("academicPrograms")}
                           </div>
-                          <p className="text-base leading-tight text-gray-600 dark:text-gray-300 relative z-10">
+                          <p className="text-sm lg:text-base leading-tight text-gray-600 dark:text-gray-300 relative z-10">
                             {t("viewAllPrograms")}
                           </p>
-                          <div className="mt-6 text-sm text-blue-600 font-semibold relative z-10">
+                          <div className="mt-4 lg:mt-6 text-xs lg:text-sm text-blue-600 font-semibold relative z-10">
                             {language === "ar" ? "12 برنامج متاح" : "12 Programs Available"}
                           </div>
                         </Link>
                       </NavigationMenuLink>
                     </div>
-                    <div className="grid gap-4 col-span-4 grid-cols-2">
+                    <div className="grid gap-3 lg:col-span-4 md:col-span-3 sm:col-span-1 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 lg:max-h-[60vh] lg:overflow-y-auto lg:pr-2" 
+                         style={{
+                           scrollbarWidth: 'thin',
+                           scrollbarColor: '#3b82f6 #f1f5f9'
+                         }}>
+                      <style jsx>{`
+                        .grid::-webkit-scrollbar {
+                          width: 6px;
+                        }
+                        .grid::-webkit-scrollbar-track {
+                          background: #f1f5f9;
+                          border-radius: 3px;
+                        }
+                        .grid::-webkit-scrollbar-thumb {
+                          background: #3b82f6;
+                          border-radius: 3px;
+                        }
+                        .grid::-webkit-scrollbar-thumb:hover {
+                          background: #2563eb;
+                        }
+                      `}</style>
                       {academicsMenuItems.map((item, index) => (
                         <NavigationMenuLink key={index} asChild>
                           <Link
                             href={item.href}
-                            className="block select-none space-y-3 rounded-2xl p-4 leading-none no-underline outline-none hover:bg-gray-50 dark:hover:bg-gray-800 focus:bg-gray-50 dark:focus:bg-gray-800"
+                            className="block select-none space-y-2 rounded-2xl p-3 lg:p-4 leading-none no-underline outline-none hover:bg-gray-50 dark:hover:bg-gray-800 focus:bg-gray-50 dark:focus:bg-gray-800 transition-colors"
                           >
-                            <div className="flex items-center gap-3 mb-2">
-                              <div className={`h-10 w-10 rounded-xl flex items-center justify-center ${item.color}`}>
-                                <item.icon className="h-5 w-5" />
+                            <div className="flex items-center gap-3 mb-1 lg:mb-2">
+                              <div className={`h-8 w-8 lg:h-10 lg:w-10 rounded-xl flex items-center justify-center ${item.color}`}>
+                                <item.icon className="h-4 w-4 lg:h-5 lg:w-5" />
                               </div>
-                              <div className="flex-1">
-                                <div className="text-sm font-bold text-gray-900 dark:text-white">
+                              <div className="flex-1 min-w-0">
+                                <div className="text-xs lg:text-sm font-bold text-gray-900 dark:text-white truncate">
                                   {language === "ar" ? item.titleAr : item.title}
                                 </div>
                                 <div className="text-xs text-blue-600 font-semibold">{item.students} Students</div>
                               </div>
                             </div>
-                            <p className="text-xs leading-relaxed text-gray-600 dark:text-gray-400">
+                            <p className="text-xs leading-relaxed text-gray-600 dark:text-gray-400 line-clamp-2">
                               {language === "ar" ? item.descriptionAr : item.description}
                             </p>
                           </Link>
