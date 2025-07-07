@@ -67,7 +67,7 @@ const academicHighlights = [
     description: "MBA, Business Administration, and Economic Sciences programs",
     descriptionAr: "برامج ماجستير إدارة الأعمال وإدارة الأعمال والعلوم الاقتصادية",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=750&q=80", // Business/Meeting room focus
-    link: "/academics/business",
+    link: "/academics/business-administration",
     color: "from-purple-500 to-purple-700",
   },
 ]
