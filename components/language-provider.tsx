@@ -45,6 +45,12 @@ const translations = {
     effectiveCommunicators: "Effective Communicators",
     ethicallyResponsible: "Ethically Responsible & Globally Aware",
 
+    // Feature descriptions
+    professionallyCompetentDesc: "Deep knowledge and practical expertise in specialized fields with global awareness and industry connections.",
+    criticalThinkersDesc: "Independent learners who initiate creative ideas, embrace advanced technologies, and drive innovation.",
+    problemSolversDesc: "Skilled in solving complex problems, making effective decisions with flexibility and continuous improvement.",
+    effectiveCommunicatorsDesc: "Clear, objective communication using multimedia tools with deep cultural understanding and collaboration skills.",
+
     // Academics dropdown
     graduateQualities: "Graduate Qualities",
     engineeringPrograms: "Engineering Programs",
@@ -140,6 +146,12 @@ const translations = {
     events: "الفعاليات",
     about: "حولنا",
     contact: "اتصل بنا",
+    
+    // Feature descriptions
+    professionallyCompetentDesc: "معرفة عميقة وخبرة عملية في مجالات متخصصة مع وعي عالمي وروابط صناعية.",
+    criticalThinkersDesc: "متعلمون مستقلون يطرحون أفكارًا إبداعية، ويتبنون التقنيات المتقدمة، ويدفعون الابتكار.",
+    problemSolversDesc: "ماهرون في حل المشكلات المعقدة، واتخاذ قرارات فعالة مع المرونة والتحسين المستمر.",
+    effectiveCommunicatorsDesc: "تواصل واضح وموضوعي باستخدام أدوات الوسائط المتعددة مع فهم ثقافي عميق ومهارات التعاون.",
 
     // Home page
     welcome: "مرحباً بكم في كلية الجزيرة للتكنولوجيا",
@@ -256,7 +268,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>("en")
 
   const t = (key: string): string => {
-    return translations[language][key as keyof (typeof translations)["en"]] || key
+    // @ts-ignore - We know that the key might not exist in both language objects
+    return translations[language][key] || key
   }
 
   return (

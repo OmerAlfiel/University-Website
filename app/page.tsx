@@ -16,26 +16,22 @@ export default function HomePage() {
     {
       icon: Target,
       title: t("professionallyCompetent"),
-      description:
-        "Deep knowledge and practical expertise in specialized fields with global awareness and industry connections.",
+      description: t("professionallyCompetentDesc"),
     },
     {
       icon: Users,
       title: t("criticalThinkers"),
-      description:
-        "Independent learners who initiate creative ideas, embrace advanced technologies, and drive innovation.",
+      description: t("criticalThinkersDesc"),
     },
     {
       icon: BookOpen,
       title: t("problemSolvers"),
-      description:
-        "Skilled in solving complex problems, making effective decisions with flexibility and continuous improvement.",
+      description: t("problemSolversDesc"),
     },
     {
       icon: Award,
       title: t("effectiveCommunicators"),
-      description:
-        "Clear, objective communication using multimedia tools with deep cultural understanding and collaboration skills.",
+      description: t("effectiveCommunicatorsDesc"),
     },
   ]
 

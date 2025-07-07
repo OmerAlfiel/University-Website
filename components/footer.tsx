@@ -144,7 +144,7 @@ export function Footer() {
       <div className="container px-6 md:px-8 py-16 relative z-10">
         <div className="grid gap-12 lg:grid-cols-4 max-w-6xl mx-auto">
           {/* University Info */}
-          <div className="lg:col-span-1 text-center lg:text-left">
+          <div className="lg:col-span-1 text-center lg:text-left" dir="ltr">
             <div className="flex items-center justify-center lg:justify-start space-x-3 mb-6">
               <div className="h-16 w-16 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-xl relative overflow-hidden group">
                 {/* Inner glow effect */}
@@ -189,7 +189,7 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left" dir="ltr">
             <h4 className="font-bold text-white mb-6 text-xl flex items-center justify-center lg:justify-start gap-2">
               <Building className="h-5 w-5 text-blue-400" />
               {language === "ar" ? "روابط سريعة" : "Quick Links"}
@@ -208,7 +208,7 @@ export function Footer() {
           </div>
 
           {/* Academic Programs */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left" dir="ltr">
             <h4 className="font-bold text-white mb-6 text-xl flex items-center justify-center lg:justify-start gap-2">
               <GraduationCap className="h-5 w-5 text-blue-400" />
               {language === "ar" ? "البرامج الأكاديمية" : "Academic Programs"}
@@ -227,7 +227,7 @@ export function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left" dir="ltr">
             <h4 className="font-bold text-white mb-6 text-xl flex items-center justify-center lg:justify-start gap-2">
               <Globe className="h-5 w-5 text-blue-400" />
               {language === "ar" ? "معلومات الاتصال" : "Contact Info"}
@@ -276,7 +276,7 @@ export function Footer() {
             </div>
 
             {/* Quick Actions */}
-            <div className="mt-6 space-y-3">
+            <div className="mt-6 space-y-3" dir="ltr">
               <Button
                 asChild
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-semibold"
@@ -302,10 +302,10 @@ export function Footer() {
       <div className="border-t border-white/10 relative z-10">
         <div className="container px-6 md:px-8 py-8">
           <div className="max-w-4xl mx-auto">
-            <h4 className="font-bold text-white mb-4 text-center">
+            <h4 className="font-bold text-white mb-4 text-center" dir="ltr">
               {language === "ar" ? "الاعتمادات والشهادات" : "Accreditations & Certifications"}
             </h4>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-4" dir="ltr">
               {accreditations.map((accreditation, index) => (
                 <div
                   key={index}
@@ -323,7 +323,7 @@ export function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/10 bg-black/20 relative z-10">
         <div className="container px-6 md:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 max-w-6xl mx-auto" dir="ltr">
             <div className="text-center md:text-left">
               <p className="text-gray-400">
                 &copy; 2025 Gezira College of Technology.{" "}
