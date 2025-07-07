@@ -75,10 +75,14 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-800 text-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width%3D%2260%22 height%3D%2260%22 viewBox%3D%220 0 60 60%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg fill%3D%22none%22 fillRule%3D%22evenodd%22%3E%3Cg fill%3D%22%23ffffff%22 fillOpacity%3D%220.1%22%3E%3Ccircle cx%3D%2230%22 cy%3D%2230%22 r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')]"></div>
+    <footer className="bg-gradient-to-br from-gray-900/90 via-blue-900/85 to-gray-800/90 text-white relative overflow-hidden">
+      {/* Background Patterns */}
+      <div className="absolute inset-0 opacity-20">
+        {/* Primary dot pattern */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width%3D%2260%22 height%3D%2260%22 viewBox%3D%220 0 60 60%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg fill%3D%22none%22 fillRule%3D%22evenodd%22%3E%3Cg fill%3D%22%23ffffff%22 fillOpacity%3D%220.2%22%3E%3Ccircle cx%3D%2230%22 cy%3D%2230%22 r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] scale-[1.25]"></div>
+        
+        {/* Secondary subtle grid pattern */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E%3Cpath fill=%22%23ffffff%22 fill-opacity=%220.05%22 d=%22M1,1 L19,1 L19,19 L1,19 L1,1 Z M0,0 L20,0 L20,20 L0,20 L0,0 Z%22/%3E%3C/svg%3E')] opacity-30"></div>
       </div>
 
       {/* Newsletter Section */}
@@ -142,8 +146,19 @@ export function Footer() {
           {/* University Info */}
           <div className="lg:col-span-1 text-center lg:text-left">
             <div className="flex items-center justify-center lg:justify-start space-x-3 mb-6">
-              <div className="h-16 w-16 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-xl">
-                <span className="text-white font-bold text-xl">GCT</span>
+              <div className="h-16 w-16 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-xl relative overflow-hidden group">
+                {/* Inner glow effect */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.7),transparent_70%)] opacity-80"></div>
+                
+                {/* Subtle animated pulse */}
+                <div className="absolute inset-0 bg-blue-500/20 animate-[pulse_3s_infinite]"></div>
+                
+                {/* Logo image with enhanced clarity */}
+                <img 
+                  src="/logo-white.svg" 
+                  alt="GCT Logo" 
+                  className="w-full h-full p-[5%] object-contain brightness-110 drop-shadow-md relative z-10 transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
               <div>
                 <h3 className="font-bold text-2xl text-white">Gezira College</h3>
@@ -165,7 +180,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`h-10 w-10 bg-white/10 rounded-xl flex items-center justify-center text-gray-300 hover:bg-white/20 transition-colors ${social.color}`}
+                  className={`h-10 w-10 bg-white/10 backdrop-blur-sm border border-white/5 rounded-xl flex items-center justify-center text-gray-300 hover:bg-white/20 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 ${social.color}`}
                 >
                   <social.icon className="h-5 w-5" />
                 </Link>
@@ -294,7 +309,7 @@ export function Footer() {
               {accreditations.map((accreditation, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-2 bg-white/10 rounded-xl px-4 py-2 hover:bg-white/20 transition-colors"
+                  className="flex items-center gap-2 bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-2 hover:from-blue-600/20 hover:to-blue-500/10 hover:border-blue-500/30 transition-all duration-300 hover:shadow-md hover:shadow-blue-500/10"
                 >
                   <accreditation.icon className="h-4 w-4 text-blue-400" />
                   <span className="text-sm text-gray-300 font-semibold">{accreditation.name}</span>
@@ -311,7 +326,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 max-w-6xl mx-auto">
             <div className="text-center md:text-left">
               <p className="text-gray-400">
-                &copy; 2024 Gezira College of Technology.{" "}
+                &copy; 2025 Gezira College of Technology.{" "}
                 {language === "ar" ? "جميع الحقوق محفوظة" : "All rights reserved"}.
               </p>
             </div>

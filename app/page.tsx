@@ -115,9 +115,9 @@ const academicHighlights = [
 
   return (
     <div className="flex flex-col items-center w-full">
-      {/* Hero Section */}
+      {/* Hero Section - Enhanced to Start Below Header */}
       <AnimatedSection animation="fade-up">
-        <section className="relative w-full py-16 md:py-24 lg:py-32 flex items-center bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-gray-950 dark:via-gray-900 dark:to-blue-950/20">
+        <section className="relative w-full pt-20 md:pt-28 lg:pt-32 pb-16 md:pb-24 lg:pb-32 flex items-center bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-gray-950 dark:via-gray-900 dark:to-blue-950/20">
           <FloatingElements />
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80')] bg-cover bg-center opacity-5"></div>
           <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
@@ -358,13 +358,14 @@ const academicHighlights = [
       {/* CTA Section */}
       <AnimatedSection animation="fade-up" delay={900}>
         <section className="relative py-24 lg:py-32 overflow-hidden">
-          {/* Background with overlay pattern */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 z-0"></div>
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80')] opacity-10 z-0"></div>
-          
-          {/* Decorative elements */}
-          <div className="absolute top-0 left-0 w-72 h-72 bg-blue-400 rounded-full filter blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-300 rounded-full filter blur-3xl opacity-20 translate-x-1/3 translate-y-1/3"></div>
+          {/* Professional background with clearer image */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/70 via-blue-700/65 to-blue-800/70 z-0"></div>
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80')] bg-cover bg-center opacity-40 mix-blend-soft-light z-0"></div>
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width%3D%22100%22 height%3D%22100%22 viewBox%3D%220 0 100 100%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath d%3D%22M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z%22 fill%3D%22%23ffffff%22 fill-opacity%3D%220.1%22 fill-rule%3D%22evenodd%22/%3E%3C/svg%3E')] opacity-20 z-0"></div>
+          {/* Refined decorative elements for clearer background */}
+          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl opacity-15 -translate-x-1/3 -translate-y-1/3"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-300 rounded-full filter blur-3xl opacity-15 translate-x-1/3 translate-y-1/3"></div>
+          <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-cyan-300 rounded-full filter blur-3xl opacity-10"></div>
           
           <div className="container relative z-10 px-6 md:px-8">
             <div className="grid lg:grid-cols-5 gap-8 items-center">
@@ -381,28 +382,28 @@ const academicHighlights = [
                 
                 {/* Stats */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8">
-                  <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
+                  <div className="bg-white/15 rounded-2xl p-4 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors duration-300 hover:scale-105 transform">
                     <div className="text-2xl sm:text-3xl font-bold text-white">98%</div>
-                    <div className="text-sm text-white/80">{language === "ar" ? "معدل التوظيف" : "Employment Rate"}</div>
+                    <div className="text-sm text-white/90">{language === "ar" ? "معدل التوظيف" : "Employment Rate"}</div>
                   </div>
-                  <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
+                  <div className="bg-white/15 rounded-2xl p-4 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors duration-300 hover:scale-105 transform">
                     <div className="text-2xl sm:text-3xl font-bold text-white">15+</div>
-                    <div className="text-sm text-white/80">{language === "ar" ? "برامج أكاديمية" : "Academic Programs"}</div>
+                    <div className="text-sm text-white/90">{language === "ar" ? "برامج أكاديمية" : "Academic Programs"}</div>
                   </div>
-                  <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
+                  <div className="bg-white/15 rounded-2xl p-4 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors duration-300 hover:scale-105 transform">
                     <div className="text-2xl sm:text-3xl font-bold text-white">50+</div>
-                    <div className="text-sm text-white/80">{language === "ar" ? "شركاء دوليون" : "Global Partners"}</div>
+                    <div className="text-sm text-white/90">{language === "ar" ? "شركاء دوليون" : "Global Partners"}</div>
                   </div>
-                  <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
+                  <div className="bg-white/15 rounded-2xl p-4 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors duration-300 hover:scale-105 transform">
                     <div className="text-2xl sm:text-3xl font-bold text-white">24/7</div>
-                    <div className="text-sm text-white/80">{language === "ar" ? "دعم الطلاب" : "Student Support"}</div>
+                    <div className="text-sm text-white/90">{language === "ar" ? "دعم الطلاب" : "Student Support"}</div>
                   </div>
                 </div>
               </div>
               
               {/* Form Column */}
               <div className="lg:col-span-2">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
+                <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-md rounded-2xl p-6 sm:p-8 shadow-2xl border border-white/20 dark:border-gray-700/30">
                   <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">
                     {language === "ar" ? "استعلم الآن" : "Inquire Now"}
                   </h3>

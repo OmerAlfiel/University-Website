@@ -12,11 +12,7 @@ html, body {
   height: 100%;
 }
 
-/* Ensure sticky elements work properly */
-.sticky {
-  position: sticky;
-  position: -webkit-sticky;
-}
+/* Mapbox styles only - removed custom header/logo CSS in favor of Tailwind */
 
 body {
   font-family: Arial, Helvetica, sans-serif;

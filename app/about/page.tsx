@@ -149,9 +149,9 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className="container py-8 md:py-12">
+    <div className="container px-0 flex flex-col">
       {/* Header */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 px-4 md:px-8">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl mb-4">{t("about")}</h1>
         <p className="text-muted-foreground md:text-xl max-w-3xl mx-auto leading-relaxed">
           {language === "ar"
@@ -161,7 +161,7 @@ export default function AboutPage() {
       </div>
 
       {/* Campus Image */}
-      <section className="mb-16">
+      <section className="mb-16 px-4 md:px-8">
         <div className="relative h-[400px] rounded-2xl overflow-hidden">
           <Image
             src="https://images.unsplash.com/photo-1562774053-701939374585?w=1200&h=400&fit=crop&crop=center"
@@ -182,7 +182,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="mb-16">
+      <section className="mb-16 px-4 md:px-8">
         <div className="grid gap-8 md:grid-cols-2">
           <Card className="text-center border-0 shadow-lg">
             <CardHeader className="pb-6">
@@ -219,7 +219,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="mb-16">
+      <section className="mb-16 px-4 md:px-8">
         <h2 className="text-3xl font-bold mb-8 text-center">{t("ourValues")}</h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {values.map((value, index) => (
@@ -239,7 +239,7 @@ export default function AboutPage() {
       </section>
 
       {/* Facilities */}
-      <section className="mb-16">
+      <section className="mb-16 px-4 md:px-8">
         <h2 className="text-3xl font-bold mb-8 text-center">{language === "ar" ? "مرافقنا" : "Our Facilities"}</h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {facilities.map((facility, index) => (
@@ -259,7 +259,7 @@ export default function AboutPage() {
       </section>
 
       {/* History & Achievements */}
-      <section className="mb-16">
+      <section className="mb-16 px-4 md:px-8">
         <h2 className="text-3xl font-bold mb-8 text-center">{t("history")}</h2>
         <div className="relative">
           <div className="absolute left-4 md:left-1/2 md:transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-border"></div>
@@ -291,7 +291,7 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership */}
-      <section className="mb-16">
+      <section className="mb-0 px-4 md:px-8">
         <h2 className="text-3xl font-bold mb-8 text-center">{t("leadership")}</h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {leadership.map((leader, index) => (
@@ -322,7 +322,7 @@ export default function AboutPage() {
       </section>
 
       {/* Statistics */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 md:p-12 text-white">
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 p-8 md:p-12 text-white w-full h-auto flex-1 flex flex-col justify-center">
         <h2 className="text-3xl font-bold mb-8 text-center">{t("byTheNumbers")}</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center">

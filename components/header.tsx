@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { ModeToggle } from "@/components/mode-toggle"
 import { LanguageToggle } from "@/components/language-toggle"
 import { useLanguage } from "@/components/language-provider"
+import { searchData, PageItem, NewsItem, EventItem } from "@/lib/search-data"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -28,112 +29,53 @@ import {
   Stethoscope,
   Search,
   X,
-  ChevronDown,
   Phone,
   Mail,
+  Calendar,
 } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 export function Header() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const [isOpen, setIsOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [searchSuggestions, setSearchSuggestions] = useState<any[]>([])
+  const [searchResults, setSearchResults] = useState<{
+    pages: PageItem[],
+    programs: PageItem[],
+    news: NewsItem[],
+    events: EventItem[]
+  }>({ pages: [], programs: [], news: [], events: [] })
   const [showSuggestions, setShowSuggestions] = useState(false)
+  const [showResults, setShowResults] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   
-  // Force repaint to fix sticky header issues in some browsers
+  // Handle header scroll effect using React state
   useEffect(() => {
-    const header = document.querySelector('header');
-    if (header) {
-      setTimeout(() => {
-        header.classList.add('header-ready');
-      }, 100);
-    }
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [])
-
-  // Search data for suggestions
-  const searchData = [
-    // Programs
-    {
-      title: "Computer Science",
-      titleAr: "علوم الحاسوب",
-      href: "/academics/computer-science",
-      type: "program",
-      icon: Computer,
-    },
-    {
-      title: "Business Administration",
-      titleAr: "إدارة الأعمال",
-      href: "/academics/business-administration",
-      type: "program",
-      icon: Briefcase,
-    },
-    {
-      title: "MBA Program",
-      titleAr: "ماجستير إدارة الأعمال",
-      href: "/academics/mba",
-      type: "program",
-      icon: GraduationCap,
-    },
-    {
-      title: "Electrical Engineering",
-      titleAr: "الهندسة الكهربائية",
-      href: "/academics/electrical-engineering",
-      type: "program",
-      icon: Zap,
-    },
-    {
-      title: "Biomedical Engineering",
-      titleAr: "الهندسة الطبية الحيوية",
-      href: "/academics/biomedical-engineering",
-      type: "program",
-      icon: Heart,
-    },
-    {
-      title: "Architecture",
-      titleAr: "هندسة العمارة",
-      href: "/academics/architecture",
-      type: "program",
-      icon: Building,
-    },
-    { title: "Nursing Science", titleAr: "علوم التمريض", href: "/academics/nursing", type: "program", icon: Heart },
-    {
-      title: "Medical Laboratory",
-      titleAr: "المختبرات الطبية",
-      href: "/academics/medical-laboratory",
-      type: "program",
-      icon: Heart,
-    },
-    {
-      title: "Medical Radiologic Technology",
-      titleAr: "تقنية الأشعة الطبية",
-      href: "/academics/medical-radiologic",
-      type: "program",
-      icon: Zap,
-    },
-    { title: "Public Health", titleAr: "الصحة العامة", href: "/academics/public-health", type: "program", icon: Heart },
-    {
-      title: "Information Technology",
-      titleAr: "تقنية المعلومات",
-      href: "/academics/information-technology",
-      type: "program",
-      icon: Computer,
-    },
-    {
-      title: "Economic Sciences",
-      titleAr: "العلوم الاقتصادية",
-      href: "/academics/economic-sciences",
-      type: "program",
-      icon: Briefcase,
-    },
-    // Pages
-    { title: "About Us", titleAr: "من نحن", href: "/about", type: "page", icon: Building },
-    { title: "News", titleAr: "الأخبار", href: "/news", type: "page", icon: Building },
-    { title: "Events", titleAr: "الفعاليات", href: "/events", type: "page", icon: Building },
-    { title: "Gallery", titleAr: "معرض الصور", href: "/gallery", type: "page", icon: Building },
-    { title: "Contact", titleAr: "اتصل بنا", href: "/contact", type: "page", icon: Phone },
-  ]
+  
+  // Map icons to content types for display
+  const getIconForType = (type: string) => {
+    switch(type) {
+      case 'program':
+        return GraduationCap;
+      case 'news':
+        return Mail;
+      case 'event':
+        return Calendar;
+      default:
+        return Building;
+    }
+  }
 
   // Handle search input change with suggestions
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -141,35 +83,102 @@ export function Header() {
     setSearchQuery(value)
 
     if (value.length >= 2) {
-      const filtered = searchData
-        .filter((item) => {
-          const title = language === "ar" ? item.titleAr : item.title
-          return title.toLowerCase().includes(value.toLowerCase())
+      // Filter pages and programs
+      const filteredPages = searchData.pages
+        .filter(item => {
+          const title = language === "ar" ? item.titleAr : item.title;
+          const description = language === "ar" ? item.descriptionAr : item.description;
+          const keywordMatch = item.keywords.some(keyword => 
+            keyword.toLowerCase().includes(value.toLowerCase())
+          );
+          
+          return title.toLowerCase().includes(value.toLowerCase()) || 
+                 description.toLowerCase().includes(value.toLowerCase()) ||
+                 keywordMatch;
         })
-        .slice(0, 5) // Limit to 5 suggestions
+        .slice(0, 5);
+      
+      // Get program suggestions
+      const filteredPrograms = filteredPages.filter(item => item.type === "program");
+      const regularPages = filteredPages.filter(item => item.type === "page");
+      
+      // Filter news
+      const filteredNews = searchData.news
+        .filter(item => {
+          const title = language === "ar" ? item.titleAr : item.title;
+          const description = language === "ar" ? item.descriptionAr : item.description;
+          const keywordMatch = item.keywords.some(keyword => 
+            keyword.toLowerCase().includes(value.toLowerCase())
+          );
+          
+          return title.toLowerCase().includes(value.toLowerCase()) || 
+                 description.toLowerCase().includes(value.toLowerCase()) ||
+                 keywordMatch;
+        })
+        .slice(0, 3);
+      
+      // Filter events
+      const filteredEvents = searchData.events
+        .filter(item => {
+          const title = language === "ar" ? item.titleAr : item.title;
+          const description = language === "ar" ? item.descriptionAr : item.description;
+          const keywordMatch = item.keywords.some(keyword => 
+            keyword.toLowerCase().includes(value.toLowerCase())
+          );
+          
+          return title.toLowerCase().includes(value.toLowerCase()) || 
+                 description.toLowerCase().includes(value.toLowerCase()) ||
+                 keywordMatch;
+        })
+        .slice(0, 3);
+      
+      // Get top suggestions for the dropdown
+      const suggestions = [
+        ...filteredPrograms.slice(0, 2),
+        ...regularPages.slice(0, 1),
+        ...filteredNews.slice(0, 1),
+        ...filteredEvents.slice(0, 1)
+      ].slice(0, 5);
+      
+      // Add icon property to suggestions for display
+      const suggestionsWithIcons = suggestions.map(item => ({
+        ...item,
+        icon: getIconForType(item.type)
+      }));
 
-      setSearchSuggestions(filtered)
-      setShowSuggestions(true)
+      setSearchSuggestions(suggestionsWithIcons);
+      setShowSuggestions(true);
+      
+      // Store full results for search results display
+      setSearchResults({
+        pages: regularPages,
+        programs: filteredPrograms,
+        news: filteredNews,
+        events: filteredEvents
+      });
     } else {
-      setShowSuggestions(false)
-      setSearchSuggestions([])
+      setShowSuggestions(false);
+      setSearchSuggestions([]);
+      setShowResults(false);
     }
   }
 
   // Handle suggestion click
-  const handleSuggestionClick = (suggestion: any) => {
-    setSearchQuery(language === "ar" ? suggestion.titleAr : suggestion.title)
-    setShowSuggestions(false)
-    setIsSearchOpen(false)
-    window.location.href = suggestion.href
+  const handleSuggestionClick = (suggestion: PageItem | NewsItem | EventItem) => {
+    setSearchQuery(language === "ar" ? suggestion.titleAr : suggestion.title);
+    setShowSuggestions(false);
+    setShowResults(false);
+    setIsSearchOpen(false);
+    window.location.href = suggestion.url;
   }
 
   // Handle search
   const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (searchQuery.trim()) {
-      setIsSearchOpen(false)
-      window.location.href = `/search?q=${encodeURIComponent(searchQuery)}`
+      // Instead of redirecting, show results in the overlay
+      setShowSuggestions(false);
+      setShowResults(true);
     }
   }
 
@@ -307,42 +316,51 @@ export function Header() {
     },
   ]
 
-  const { language } = useLanguage()
-
   return (
     <>
-      {/* Top Contact Bar - Outside of sticky region */}
-      <div className="relative bg-blue-900 text-white py-2 text-sm">
+      {/* Top Contact Bar - Enhanced Professional Style */}
+      <div className="relative bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-2 text-sm">
         <div className="container px-6 flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 hover:text-blue-200 transition-colors">
               <Phone className="h-3 w-3" />
-              <span>+249 123 456 789</span>
+              <a href="tel:+249123456789" className="transition-colors">+249 123 456 789</a>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 hover:text-blue-200 transition-colors">
               <Mail className="h-3 w-3" />
-              <span>info@gct.edu.sd</span>
+              <a href="mailto:info@gct.edu.sd" className="transition-colors">info@gct.edu.sd</a>
             </div>
           </div>
           <div className="hidden md:flex items-center gap-4 text-xs">
-            <span>{language === "ar" ? "الأحد - الخميس: 8:00 ص - 4:00 م" : "Sun - Thu: 8:00 AM - 4:00 PM"}</span>
+            <span className="opacity-90">{language === "ar" ? "الأحد - الخميس: 8:00 ص - 4:00 م" : "Sun - Thu: 8:00 AM - 4:00 PM"}</span>
           </div>
         </div>
       </div>
 
-      {/* Main Navigation - Sticky Header */}
-      <header className="sticky top-0 z-[100] w-full bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800 shadow-md" style={{ position: "sticky", top: 0 }}>
-        <div className="container flex h-24 items-center justify-between px-6">
+      {/* Main Navigation - Enhanced Sticky Header with Glassmorphism */}
+      <header className={`sticky top-0 z-[100] w-full ${isScrolled ? 'bg-white/95 dark:bg-gray-950/95' : 'bg-white/70 dark:bg-gray-950/80'} backdrop-blur-lg backdrop-saturate-150 border-b border-white/20 dark:border-gray-800/30 shadow-lg transition-all duration-300`}>
+        <div className="container flex h-16 sm:h-20 md:h-24 lg:h-28 items-center justify-between px-2 sm:px-4 md:px-6">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-4">
-            <div className="h-16 w-16 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-3xl flex items-center justify-center shadow-xl relative overflow-hidden">
-              <span className="text-white font-bold relative z-10 text-2xl">GCT</span>
+          <Link href="/" className="flex items-center space-x-2 sm:space-x-3 md:space-x-5 group">
+            <div className="logo-container h-14 w-14 sm:h-18 sm:w-18 md:h-22 md:w-22 lg:h-24 lg:w-24 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 rounded-[12px] sm:rounded-[16px] md:rounded-[20px] flex items-center justify-center shadow-lg relative overflow-hidden border-[2px] sm:border-[3px] border-white/30 dark:border-white/20 transition-all duration-300 group-hover:shadow-blue-500/30">
+              {/* Inner glow effect */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.7),transparent_70%)] opacity-80"></div>
+              
+              {/* Subtle animated pulse */}
+              <div className="absolute inset-0 bg-blue-500/20 animate-[pulse_3s_infinite]"></div>
+              <img 
+                src="/logo-white.svg" 
+                alt="GCT Logo" 
+                className="w-full h-full p-[1%] relative z-10 transition-transform duration-300 group-hover:scale-105 object-contain brightness-110 drop-shadow-md"
+              />
             </div>
+            
+            {/* Text section with improved responsive sizing and clarity - Tailwind only */}
             <div className="flex flex-col">
-              <span className="font-bold text-gray-900 dark:text-white text-3xl">
+              <span className="font-extrabold text-gray-900 dark:text-white text-base sm:text-lg md:text-xl lg:text-2xl tracking-tight leading-tight drop-shadow-sm">
                 Gezira College
               </span>
-              <span className="text-gray-600 dark:text-gray-400 font-medium text-base">
+              <span className="text-gray-600 dark:text-gray-400 font-medium text-[10px] sm:text-xs md:text-sm lg:text-base tracking-wide">
                 of Technology
               </span>
             </div>
@@ -350,17 +368,17 @@ export function Header() {
       
           {/* Desktop Navigation */}
           <NavigationMenu className="hidden lg:flex">
-            <NavigationMenuList className="space-x-2">
+            <NavigationMenuList className="space-x-3">
               <NavigationMenuItem>
                 <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink className="inline-flex h-14 w-max items-center justify-center rounded-2xl bg-transparent px-8 py-3 text-base font-semibold hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:text-blue-600 dark:hover:text-blue-400 focus:bg-blue-50 dark:focus:bg-blue-950/30 focus:outline-none">
+                  <NavigationMenuLink className="inline-flex h-12 w-max items-center justify-center rounded-lg bg-transparent px-6 py-2 text-base font-semibold transition-all duration-200 hover:bg-blue-50/80 dark:hover:bg-blue-950/50 hover:text-blue-600 dark:hover:text-blue-400 focus:bg-blue-50/80 dark:focus:bg-blue-950/50 focus:outline-none border border-transparent hover:border-blue-200/50 dark:hover:border-blue-800/30">
                     {t("home")}
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
       
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="h-14 px-8 text-base font-semibold rounded-2xl bg-transparent hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:text-blue-600 dark:hover:text-blue-400 data-[state=open]:bg-blue-50 dark:data-[state=open]:bg-blue-950/30 data-[state=open]:text-blue-600 dark:data-[state=open]:text-blue-400">
+                <NavigationMenuTrigger className="h-12 px-6 text-base font-semibold rounded-lg bg-transparent transition-all duration-200 hover:bg-blue-50/80 dark:hover:bg-blue-950/50 hover:text-blue-600 dark:hover:text-blue-400 data-[state=open]:bg-blue-50/80 dark:data-[state=open]:bg-blue-950/50 data-[state=open]:text-blue-600 dark:data-[state=open]:text-blue-400 border border-transparent hover:border-blue-200/50 dark:hover:border-blue-800/30 data-[state=open]:border-blue-200/50 dark:data-[state=open]:border-blue-800/30">
                   {t("academics")}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -391,27 +409,7 @@ export function Header() {
                         </Link>
                       </NavigationMenuLink>
                     </div>
-                    <div className="grid gap-3 lg:col-span-4 md:col-span-3 sm:col-span-1 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 lg:max-h-[60vh] lg:overflow-y-auto lg:pr-2" 
-                         style={{
-                           scrollbarWidth: 'thin',
-                           scrollbarColor: '#3b82f6 #f1f5f9'
-                         }}>
-                      <style jsx>{`
-                        .grid::-webkit-scrollbar {
-                          width: 6px;
-                        }
-                        .grid::-webkit-scrollbar-track {
-                          background: #f1f5f9;
-                          border-radius: 3px;
-                        }
-                        .grid::-webkit-scrollbar-thumb {
-                          background: #3b82f6;
-                          border-radius: 3px;
-                        }
-                        .grid::-webkit-scrollbar-thumb:hover {
-                          background: #2563eb;
-                        }
-                      `}</style>
+                    <div className="grid gap-3 lg:col-span-4 md:col-span-3 sm:col-span-1 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 lg:max-h-[60vh] lg:overflow-y-auto lg:pr-2 scrollbar-thin scrollbar-track-slate-100 scrollbar-thumb-blue-500 hover:scrollbar-thumb-blue-600 dark:scrollbar-track-gray-800 dark:scrollbar-thumb-blue-700">
                       {academicsMenuItems.map((item, index) => (
                         <NavigationMenuLink key={index} asChild>
                           <Link
@@ -443,7 +441,7 @@ export function Header() {
               {["news", "events", "gallery", "about", "contact"].map((item) => (
                 <NavigationMenuItem key={item}>
                   <Link href={`/${item}`} legacyBehavior passHref>
-                    <NavigationMenuLink className="inline-flex h-14 w-max items-center justify-center rounded-2xl bg-transparent px-8 py-3 text-base font-semibold hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:text-blue-600 dark:hover:text-blue-400 focus:bg-blue-50 dark:focus:bg-blue-950/30 focus:outline-none">
+                    <NavigationMenuLink className="inline-flex h-12 w-max items-center justify-center rounded-lg bg-transparent px-6 py-2 text-base font-semibold transition-all duration-200 hover:bg-blue-50/80 dark:hover:bg-blue-950/50 hover:text-blue-600 dark:hover:text-blue-400 focus:bg-blue-50/80 dark:focus:bg-blue-950/50 focus:outline-none border border-transparent hover:border-blue-200/50 dark:hover:border-blue-800/30">
                       {item === "gallery" ? (language === "ar" ? "معرض الصور" : "Gallery") : t(item)}
                     </NavigationMenuLink>
                   </Link>
@@ -458,7 +456,7 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="h-12 w-12 rounded-2xl hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:text-blue-600 dark:hover:text-blue-400"
+              className="h-11 w-11 rounded-lg hover:bg-blue-50/80 dark:hover:bg-blue-950/50 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 border border-transparent hover:border-blue-200/50 dark:hover:border-blue-800/30"
               onClick={() => setIsSearchOpen(true)}
             >
               <Search className="h-5 w-5" />
@@ -470,7 +468,7 @@ export function Header() {
             {/* Apply Now Button */}
             <Button
               asChild
-              className="hidden md:flex bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-2xl font-semibold"
+              className="hidden md:flex bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 border border-blue-500/30"
             >
               <Link href="/contact">{language === "ar" ? "تقدم الآن" : "Apply Now"}</Link>
             </Button>
@@ -481,9 +479,9 @@ export function Header() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-12 w-12 rounded-2xl hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:text-blue-600 dark:hover:text-blue-400"
+                  className="h-11 w-11 rounded-lg hover:bg-blue-50/80 dark:hover:bg-blue-950/50 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 border border-transparent hover:border-blue-200/50 dark:hover:border-blue-800/30"
                 >
-                  <Menu className="h-6 w-6" />
+                  <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[380px] sm:w-[420px]">
@@ -537,12 +535,10 @@ export function Header() {
           </div>
         </div>
       </header>
-
-      {/* Enhanced Search Overlay - Higher z-index than header */}
       {isSearchOpen && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-lg">
-          <div className="container mx-auto px-6 pt-40">
-            <div className="max-w-3xl mx-auto">
+        <div className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-lg overflow-y-auto max-h-screen">
+          <div className="container mx-auto px-6 py-20">
+            <div className="max-w-4xl mx-auto">
               <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl p-10">
                 <div className="flex items-center justify-between mb-8">
                   <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
@@ -551,7 +547,11 @@ export function Header() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    onClick={() => setIsSearchOpen(false)}
+                    onClick={() => {
+                      setIsSearchOpen(false);
+                      setShowResults(false);
+                      setSearchQuery("");
+                    }}
                     className="h-12 w-12 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800"
                   >
                     <X className="h-6 w-6" />
@@ -577,7 +577,7 @@ export function Header() {
                   </Button>
 
                   {/* Search Suggestions Dropdown */}
-                  {showSuggestions && searchSuggestions.length > 0 && (
+                  {showSuggestions && !showResults && searchSuggestions.length > 0 && (
                     <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border-2 border-gray-200 dark:border-gray-700 z-50">
                       {searchSuggestions.map((suggestion, index) => (
                         <button
@@ -598,6 +598,14 @@ export function Header() {
                                 ? language === "ar"
                                   ? "برنامج"
                                   : "Program"
+                                : suggestion.type === "news"
+                                ? language === "ar"
+                                  ? "خبر"
+                                  : "News"
+                                : suggestion.type === "event"
+                                ? language === "ar"
+                                  ? "فعالية"
+                                  : "Event"
                                 : language === "ar"
                                   ? "صفحة"
                                   : "Page"}
@@ -608,9 +616,202 @@ export function Header() {
                     </div>
                   )}
                 </form>
-                <div className="mt-8 text-base text-gray-600 dark:text-gray-400">
-                  {language === "ar" ? "اضغط Enter للبحث أو Esc للإغلاق" : "Press Enter to search or Esc to close"}
-                </div>
+
+                {/* Search Results */}
+                {showResults && (
+                  <div className="mt-10 space-y-8">
+                    {/* Result Stats */}
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                      {language === "ar" 
+                        ? `نتائج البحث عن "${searchQuery}": ${
+                            searchResults.programs.length + 
+                            searchResults.pages.length + 
+                            searchResults.news.length + 
+                            searchResults.events.length
+                          } نتيجة`
+                        : `Search results for "${searchQuery}": ${
+                            searchResults.programs.length + 
+                            searchResults.pages.length + 
+                            searchResults.news.length + 
+                            searchResults.events.length
+                          } results`
+                      }
+                    </div>
+
+                    {/* Academic Programs Results */}
+                    {searchResults.programs.length > 0 && (
+                      <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl">
+                        <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
+                          <GraduationCap className="h-5 w-5 text-blue-600" />
+                          {language === "ar" ? "البرامج الأكاديمية" : "Academic Programs"}
+                        </h4>
+                        <div className="grid gap-3 sm:grid-cols-1 md:grid-cols-2">
+                          {searchResults.programs.map((program, index) => (
+                            <Link
+                              key={index}
+                              href={program.url}
+                              onClick={() => {
+                                setIsSearchOpen(false);
+                                setShowResults(false);
+                              }}
+                              className="flex items-start gap-3 p-3 rounded-xl hover:bg-white dark:hover:bg-gray-800 transition-colors"
+                            >
+                              <div className="h-10 w-10 bg-blue-100 dark:bg-blue-900/20 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                                <GraduationCap className="h-5 w-5 text-blue-600" />
+                              </div>
+                              <div>
+                                <div className="font-semibold text-gray-900 dark:text-white">
+                                  {language === "ar" ? program.titleAr : program.title}
+                                </div>
+                                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
+                                  {language === "ar" ? program.descriptionAr : program.description}
+                                </div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Pages Results */}
+                    {searchResults.pages.length > 0 && (
+                      <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl">
+                        <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
+                          <Building className="h-5 w-5 text-indigo-600" />
+                          {language === "ar" ? "صفحات الموقع" : "Website Pages"}
+                        </h4>
+                        <div className="grid gap-3 sm:grid-cols-1 md:grid-cols-2">
+                          {searchResults.pages.map((page, index) => (
+                            <Link
+                              key={index}
+                              href={page.url}
+                              onClick={() => {
+                                setIsSearchOpen(false);
+                                setShowResults(false);
+                              }}
+                              className="flex items-start gap-3 p-3 rounded-xl hover:bg-white dark:hover:bg-gray-800 transition-colors"
+                            >
+                              <div className="h-10 w-10 bg-indigo-100 dark:bg-indigo-900/20 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                                <Building className="h-5 w-5 text-indigo-600" />
+                              </div>
+                              <div>
+                                <div className="font-semibold text-gray-900 dark:text-white">
+                                  {language === "ar" ? page.titleAr : page.title}
+                                </div>
+                                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
+                                  {language === "ar" ? page.descriptionAr : page.description}
+                                </div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* News Results */}
+                    {searchResults.news.length > 0 && (
+                      <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl">
+                        <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
+                          <Mail className="h-5 w-5 text-green-600" />
+                          {language === "ar" ? "الأخبار" : "News"}
+                        </h4>
+                        <div className="grid gap-3 sm:grid-cols-1 md:grid-cols-2">
+                          {searchResults.news.map((news, index) => (
+                            <Link
+                              key={index}
+                              href={news.url}
+                              onClick={() => {
+                                setIsSearchOpen(false);
+                                setShowResults(false);
+                              }}
+                              className="flex items-start gap-3 p-3 rounded-xl hover:bg-white dark:hover:bg-gray-800 transition-colors"
+                            >
+                              <div className="h-10 w-10 bg-green-100 dark:bg-green-900/20 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                                <Mail className="h-5 w-5 text-green-600" />
+                              </div>
+                              <div>
+                                <div className="font-semibold text-gray-900 dark:text-white">
+                                  {language === "ar" ? news.titleAr : news.title}
+                                </div>
+                                <div className="text-xs text-blue-600 dark:text-blue-400 mt-0.5">
+                                  {news.date} • {language === "ar" ? news.categoryAr : news.category}
+                                </div>
+                                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
+                                  {language === "ar" ? news.descriptionAr : news.description}
+                                </div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Events Results */}
+                    {searchResults.events.length > 0 && (
+                      <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl">
+                        <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
+                          <Calendar className="h-5 w-5 text-orange-600" />
+                          {language === "ar" ? "الفعاليات" : "Events"}
+                        </h4>
+                        <div className="grid gap-3 sm:grid-cols-1 md:grid-cols-2">
+                          {searchResults.events.map((event, index) => (
+                            <Link
+                              key={index}
+                              href={event.url}
+                              onClick={() => {
+                                setIsSearchOpen(false);
+                                setShowResults(false);
+                              }}
+                              className="flex items-start gap-3 p-3 rounded-xl hover:bg-white dark:hover:bg-gray-800 transition-colors"
+                            >
+                              <div className="h-10 w-10 bg-orange-100 dark:bg-orange-900/20 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                                <Calendar className="h-5 w-5 text-orange-600" />
+                              </div>
+                              <div>
+                                <div className="font-semibold text-gray-900 dark:text-white">
+                                  {language === "ar" ? event.titleAr : event.title}
+                                </div>
+                                <div className="text-xs text-blue-600 dark:text-blue-400 mt-0.5">
+                                  {event.date} • {language === "ar" ? event.locationAr : event.location}
+                                </div>
+                                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
+                                  {language === "ar" ? event.descriptionAr : event.description}
+                                </div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* No Results */}
+                    {searchResults.programs.length === 0 && 
+                     searchResults.pages.length === 0 && 
+                     searchResults.news.length === 0 && 
+                     searchResults.events.length === 0 && (
+                      <div className="py-20 text-center">
+                        <div className="inline-flex items-center justify-center h-20 w-20 bg-gray-100 dark:bg-gray-800 rounded-full mb-6">
+                          <Search className="h-10 w-10 text-gray-400" />
+                        </div>
+                        <h4 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+                          {language === "ar" ? "لم يتم العثور على نتائج" : "No results found"}
+                        </h4>
+                        <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+                          {language === "ar" 
+                            ? `نأسف، لم نتمكن من العثور على نتائج مطابقة لـ "${searchQuery}". يرجى المحاولة بكلمات مختلفة.`
+                            : `Sorry, we couldn't find any matches for "${searchQuery}". Please try different keywords.`
+                          }
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {!showResults && (
+                  <div className="mt-8 text-base text-gray-600 dark:text-gray-400">
+                    {language === "ar" ? "اضغط Enter للبحث أو Esc للإغلاق" : "Press Enter to search or Esc to close"}
+                  </div>
+                )}
               </div>
             </div>
           </div>
