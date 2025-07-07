@@ -19,7 +19,7 @@ export default function NewsPage() {
       date: "December 15, 2024",
       author: "Dr. Ahmed Hassan",
       category: "Academic Programs",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop&crop=center",
       featured: true,
     },
     {
@@ -30,7 +30,7 @@ export default function NewsPage() {
       date: "December 10, 2024",
       author: "Prof. Sarah Mohamed",
       category: "Student Achievement",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=400&fit=crop&crop=center",
     },
     {
       id: 3,
@@ -40,7 +40,7 @@ export default function NewsPage() {
       date: "December 5, 2024",
       author: "Dr. Omar Ali",
       category: "Partnerships",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=400&fit=crop&crop=center",
     },
     {
       id: 4,
@@ -50,7 +50,7 @@ export default function NewsPage() {
       date: "November 28, 2024",
       author: "Dr. Fatima Ibrahim",
       category: "Infrastructure",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800&h=400&fit=crop&crop=center",
     },
     {
       id: 5,
@@ -60,7 +60,7 @@ export default function NewsPage() {
       date: "November 20, 2024",
       author: "Dr. Khalid Osman",
       category: "Faculty Achievement",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop&crop=center",
     },
     {
       id: 6,
@@ -70,7 +70,7 @@ export default function NewsPage() {
       date: "November 15, 2024",
       author: "Ms. Amal Yousif",
       category: "Career Services",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&h=400&fit=crop&crop=center",
     },
   ]
 

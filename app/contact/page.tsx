@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { useLanguage } from "@/components/language-provider"
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react"
+import Map from "@/components/map"
 
 export default function ContactPage() {
   const { t } = useLanguage()
@@ -224,17 +225,14 @@ export default function ContactPage() {
       {/* Map Section */}
       <section className="mt-16">
         <h2 className="text-3xl font-bold mb-8 text-center">Find Us</h2>
-        <Card>
-          <CardContent className="p-0">
-            <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                <p className="text-muted-foreground">Interactive map would be embedded here</p>
-                <p className="text-sm text-muted-foreground mt-2">Gezira Island, Khartoum, Sudan</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <div className="h-[600px]">
+          <Map 
+            longitude={32.5599} 
+            latitude={15.5007} 
+            zoom={15}
+            className="rounded-lg"
+          />
+        </div>
       </section>
     </div>
   )

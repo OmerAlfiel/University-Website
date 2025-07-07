@@ -360,25 +360,32 @@ export function Header() {
               </NavigationMenuItem>
       
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="h-14 px-8 text-base font-semibold rounded-2xl hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:text-blue-600 dark:hover:text-blue-400 data-[state=open]:bg-blue-50 dark:data-[state=open]:bg-blue-950/30 data-[state=open]:text-blue-600 dark:data-[state=open]:text-blue-400">
+                <NavigationMenuTrigger className="h-14 px-8 text-base font-semibold rounded-2xl bg-transparent hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:text-blue-600 dark:hover:text-blue-400 data-[state=open]:bg-blue-50 dark:data-[state=open]:bg-blue-950/30 data-[state=open]:text-blue-600 dark:data-[state=open]:text-blue-400">
                   {t("academics")}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="grid gap-6 p-6 w-[95vw] max-w-[1100px] max-h-[80vh] overflow-y-auto lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1">
+                  <div className="grid gap-6 p-6 w-[95vw] max-w-[1100px] max-h-[80vh] lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1">
                     <div className="lg:row-span-4 lg:col-span-1 md:col-span-3 sm:col-span-1 lg:sticky lg:top-0 lg:self-start">
                       <NavigationMenuLink asChild>
                         <Link
-                          className="flex h-full w-full select-none flex-col justify-end rounded-3xl bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 dark:from-blue-950 dark:via-blue-900 dark:to-blue-800 p-6 lg:p-8 no-underline outline-none focus:shadow-xl hover:shadow-2xl min-h-[200px]"
+                          className="group flex h-full w-full select-none flex-col justify-end rounded-3xl bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 dark:from-blue-950 dark:via-blue-900 dark:to-blue-800 p-6 lg:p-8 no-underline outline-none focus:shadow-xl hover:shadow-2xl hover:scale-[1.02] min-h-[200px] transition-all duration-300 border-2 border-transparent hover:border-blue-300 dark:hover:border-blue-600"
                           href="/academics"
                         >
-                          <GraduationCap className="h-12 w-12 lg:h-16 lg:w-16 text-blue-600 mb-4 lg:mb-6 relative z-10" />
-                          <div className="mb-2 lg:mb-3 mt-2 lg:mt-4 text-xl lg:text-2xl font-bold text-gray-900 dark:text-white relative z-10">
-                            {t("academicPrograms")}
+                          <div className="flex items-center justify-between mb-4 lg:mb-6">
+                            <GraduationCap className="h-12 w-12 lg:h-16 lg:w-16 text-blue-600 relative z-10 group-hover:scale-110 transition-transform duration-300" />
+                            <div className="bg-white/80 dark:bg-gray-900/80 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <svg className="h-4 w-4 lg:h-5 lg:w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </div>
                           </div>
-                          <p className="text-sm lg:text-base leading-tight text-gray-600 dark:text-gray-300 relative z-10">
-                            {t("viewAllPrograms")}
+                          <div className="mb-2 lg:mb-3 mt-2 lg:mt-4 text-xl lg:text-2xl font-bold text-gray-900 dark:text-white relative z-10 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300">
+                            {language === "ar" ? "جميع البرامج الأكاديمية" : "All Academic Programs"}
+                          </div>
+                          <p className="text-sm lg:text-base leading-tight text-gray-600 dark:text-gray-300 relative z-10 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300">
+                            {language === "ar" ? "استكشف جميع برامجنا الأكاديمية والدرجات العلمية المتاحة" : "Explore all our academic programs and degrees"}
                           </p>
-                          <div className="mt-4 lg:mt-6 text-xs lg:text-sm text-blue-600 font-semibold relative z-10">
+                          <div className="mt-4 lg:mt-6 text-xs lg:text-sm text-gray-700 dark:text-gray-300 font-semibold relative z-10">
                             {language === "ar" ? "12 برنامج متاح" : "12 Programs Available"}
                           </div>
                         </Link>

@@ -59,8 +59,8 @@ export default function GalleryPage() {
       title: language === "ar" ? "المبنى الرئيسي للكلية" : "Main College Building",
       category: "campus",
       type: "image",
-      src: "/placeholder.svg?height=600&width=800",
-      thumbnail: "/placeholder.svg?height=300&width=400",
+      src: "https://images.unsplash.com/photo-1562774053-701939374585?w=1200&h=800&fit=crop&crop=center",
+      thumbnail: "https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=300&fit=crop&crop=center",
       date: "2024-01-15",
       location: language === "ar" ? "الحرم الجامعي الرئيسي" : "Main Campus",
       description:
@@ -73,8 +73,8 @@ export default function GalleryPage() {
       title: language === "ar" ? "حديقة الكلية" : "College Garden",
       category: "campus",
       type: "image",
-      src: "/placeholder.svg?height=600&width=800",
-      thumbnail: "/placeholder.svg?height=300&width=400",
+      src: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200&h=800&fit=crop&crop=center",
+      thumbnail: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=300&fit=crop&crop=center",
       date: "2024-01-10",
       location: language === "ar" ? "الحديقة المركزية" : "Central Garden",
       description: language === "ar" ? "المساحات الخضراء الجميلة في الحرم الجامعي" : "Beautiful green spaces on campus",
@@ -84,8 +84,8 @@ export default function GalleryPage() {
       title: language === "ar" ? "مختبر الحاسوب المتقدم" : "Advanced Computer Lab",
       category: "labs",
       type: "image",
-      src: "/placeholder.svg?height=600&width=800",
-      thumbnail: "/placeholder.svg?height=300&width=400",
+      src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=800&fit=crop&crop=center",
+      thumbnail: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop&crop=center",
       date: "2024-01-08",
       location: language === "ar" ? "مبنى الهندسة" : "Engineering Building",
       description:
@@ -96,8 +96,8 @@ export default function GalleryPage() {
       title: language === "ar" ? "حفل التخرج 2024" : "Graduation Ceremony 2024",
       category: "graduation",
       type: "image",
-      src: "/placeholder.svg?height=600&width=800",
-      thumbnail: "/placeholder.svg?height=300&width=400",
+      src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&h=800&fit=crop&crop=center",
+      thumbnail: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop&crop=center",
       date: "2024-06-15",
       location: language === "ar" ? "القاعة الكبرى" : "Main Auditorium",
       description: language === "ar" ? "احتفال تخرج دفعة 2024" : "Class of 2024 graduation celebration",
@@ -107,8 +107,8 @@ export default function GalleryPage() {
       title: language === "ar" ? "مكتبة الكلية" : "College Library",
       category: "library",
       type: "image",
-      src: "/placeholder.svg?height=600&width=800",
-      thumbnail: "/placeholder.svg?height=300&width=400",
+      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop&crop=center",
+      thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=center",
       date: "2024-01-05",
       location: language === "ar" ? "مبنى المكتبة" : "Library Building",
       description: language === "ar" ? "مكتبة حديثة مع مصادر متنوعة" : "Modern library with diverse resources",
@@ -118,8 +118,8 @@ export default function GalleryPage() {
       title: language === "ar" ? "مختبر الهندسة الطبية" : "Biomedical Engineering Lab",
       category: "labs",
       type: "image",
-      src: "/placeholder.svg?height=600&width=800",
-      thumbnail: "/placeholder.svg?height=300&width=400",
+      src: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1200&h=800&fit=crop&crop=center",
+      thumbnail: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&h=300&fit=crop&crop=center",
       date: "2024-01-03",
       location: language === "ar" ? "مبنى العلوم الصحية" : "Health Sciences Building",
       description:
@@ -130,8 +130,8 @@ export default function GalleryPage() {
       title: language === "ar" ? "قاعة المحاضرات الكبرى" : "Main Lecture Hall",
       category: "academics",
       type: "image",
-      src: "/placeholder.svg?height=600&width=800",
-      thumbnail: "/placeholder.svg?height=300&width=400",
+      src: "https://images.unsplash.com/photo-1562774053-701939374585?w=1200&h=800&fit=crop&crop=center",
+      thumbnail: "https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=300&fit=crop&crop=center",
       date: "2023-12-20",
       location: language === "ar" ? "المبنى الأكاديمي" : "Academic Building",
       description:
@@ -142,8 +142,8 @@ export default function GalleryPage() {
       title: language === "ar" ? "الملعب الرياضي" : "Sports Field",
       category: "sports",
       type: "image",
-      src: "/placeholder.svg?height=600&width=800",
-      thumbnail: "/placeholder.svg?height=300&width=400",
+      src: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200&h=800&fit=crop&crop=center",
+      thumbnail: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=300&fit=crop&crop=center",
       date: "2023-12-15",
       location: language === "ar" ? "المجمع الرياضي" : "Sports Complex",
       description:
@@ -154,8 +154,8 @@ export default function GalleryPage() {
       title: language === "ar" ? "معرض العلوم السنوي" : "Annual Science Fair",
       category: "events",
       type: "image",
-      src: "/placeholder.svg?height=600&width=800",
-      thumbnail: "/placeholder.svg?height=300&width=400",
+      src: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=1200&h=800&fit=crop&crop=center",
+      thumbnail: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&h=300&fit=crop&crop=center",
       date: "2023-11-20",
       location: language === "ar" ? "قاعة المعارض" : "Exhibition Hall",
       description:
@@ -166,8 +166,8 @@ export default function GalleryPage() {
       title: language === "ar" ? "مختبر الكيمياء" : "Chemistry Laboratory",
       category: "labs",
       type: "image",
-      src: "/placeholder.svg?height=600&width=800",
-      thumbnail: "/placeholder.svg?height=300&width=400",
+      src: "https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=1200&h=800&fit=crop&crop=center",
+      thumbnail: "https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=400&h=300&fit=crop&crop=center",
       date: "2023-11-10",
       location: language === "ar" ? "مبنى العلوم" : "Science Building",
       description:
@@ -178,8 +178,8 @@ export default function GalleryPage() {
       title: language === "ar" ? "كافتيريا الطلاب" : "Student Cafeteria",
       category: "campus",
       type: "image",
-      src: "/placeholder.svg?height=600&width=800",
-      thumbnail: "/placeholder.svg?height=300&width=400",
+      src: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&h=800&fit=crop&crop=center",
+      thumbnail: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=300&fit=crop&crop=center",
       date: "2023-11-05",
       location: language === "ar" ? "مبنى الخدمات الطلابية" : "Student Services Building",
       description: language === "ar" ? "كافتيريا حديثة ومريحة للطلاب" : "Modern and comfortable student cafeteria",
@@ -189,8 +189,8 @@ export default function GalleryPage() {
       title: language === "ar" ? "ورشة الهندسة المعمارية" : "Architecture Workshop",
       category: "academics",
       type: "image",
-      src: "/placeholder.svg?height=600&width=800",
-      thumbnail: "/placeholder.svg?height=300&width=400",
+      src: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&h=800&fit=crop&crop=center",
+      thumbnail: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400&h=300&fit=crop&crop=center",
       date: "2023-10-25",
       location: language === "ar" ? "استوديو العمارة" : "Architecture Studio",
       description:
@@ -275,7 +275,7 @@ export default function GalleryPage() {
       </AnimatedSection>
 
       {/* Filter Categories */}
-      <AnimatedSection animation="slide-up" delay={200}>
+      <AnimatedSection animation="fade-up" delay={200}>
         <section className="py-8 md:py-12 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
           <div className="container px-4 md:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-6">

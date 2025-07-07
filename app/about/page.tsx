@@ -37,7 +37,7 @@ export default function AboutPage() {
       nameAr: "أ.د. أحمد حسن",
       position: "President",
       positionAr: "رئيس الكلية",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face",
       bio: "Leading educator with over 20 years of experience in higher education administration and engineering.",
       bioAr: "أكاديمي رائد بخبرة تزيد عن 20 عاماً في إدارة التعليم العالي والهندسة.",
     },
@@ -46,7 +46,7 @@ export default function AboutPage() {
       nameAr: "د. سارة محمد",
       position: "Vice President for Academic Affairs",
       positionAr: "نائب رئيس الكلية للشؤون الأكاديمية",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=face",
       bio: "Renowned researcher in biomedical engineering with extensive experience in curriculum development.",
       bioAr: "باحثة مشهورة في الهندسة الطبية الحيوية مع خبرة واسعة في تطوير المناهج.",
     },
@@ -55,7 +55,7 @@ export default function AboutPage() {
       nameAr: "د. عمر علي",
       position: "Dean of Engineering",
       positionAr: "عميد كلية الهندسة",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
       bio: "Expert in electrical engineering with numerous publications and industry partnerships.",
       bioAr: "خبير في الهندسة الكهربائية مع العديد من المنشورات والشراكات الصناعية.",
     },
@@ -64,7 +64,7 @@ export default function AboutPage() {
       nameAr: "د. فاطمة إبراهيم",
       position: "Dean of Health Sciences",
       positionAr: "عميدة كلية العلوم الصحية",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face",
       bio: "Healthcare professional and educator specializing in medical laboratory sciences and public health.",
       bioAr: "أخصائية رعاية صحية ومعلمة متخصصة في علوم المختبرات الطبية والصحة العامة.",
     },
@@ -164,7 +164,7 @@ export default function AboutPage() {
       <section className="mb-16">
         <div className="relative h-[400px] rounded-2xl overflow-hidden">
           <Image
-            src="/placeholder.svg?height=400&width=1200"
+            src="https://images.unsplash.com/photo-1562774053-701939374585?w=1200&h=400&fit=crop&crop=center"
             alt="Gezira College Campus"
             fill
             className="object-cover"

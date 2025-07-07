@@ -21,7 +21,7 @@ export default function EventsPage() {
       location: "Main Campus Auditorium",
       category: "Academic",
       attendees: "500+",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&h=400&fit=crop&crop=center",
       featured: true,
     },
     {
@@ -34,7 +34,7 @@ export default function EventsPage() {
       location: "Conference Hall A",
       category: "Career",
       attendees: "150",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop&crop=center",
     },
     {
       id: 3,
@@ -46,7 +46,7 @@ export default function EventsPage() {
       location: "GCT Convention Center",
       category: "Research",
       attendees: "300+",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&h=400&fit=crop&crop=center",
     },
     {
       id: 4,
@@ -58,7 +58,7 @@ export default function EventsPage() {
       location: "Multiple Venues",
       category: "Student Life",
       attendees: "800+",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=400&fit=crop&crop=center",
     },
   ]
 
@@ -73,7 +73,7 @@ export default function EventsPage() {
       location: "Main Campus Grounds",
       category: "Ceremony",
       attendees: "1000+",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=400&fit=crop&crop=center",
     },
     {
       id: 6,
@@ -84,7 +84,7 @@ export default function EventsPage() {
       location: "Technology Center",
       category: "Technology",
       attendees: "250",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=400&fit=crop&crop=center",
     },
   ]
 
