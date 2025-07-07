@@ -70,6 +70,7 @@ const translations = {
     ourValues: "Our Values",
     leadership: "Leadership Team",
     history: "Our History",
+    facilities: "Our Facilities",
 
     // News & Events
     readMore: "Read More",
@@ -187,6 +188,7 @@ const translations = {
     ourValues: "قيمنا",
     leadership: "فريق القيادة",
     history: "تاريخنا",
+    facilities: "مرافقنا",
 
     // News & Events
     readMore: "اقرأ المزيد",
@@ -259,7 +261,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
-      <div className={language === "ar" ? "rtl" : "ltr"}>{children}</div>
+      <div dir={language === "ar" ? "rtl" : "ltr"}>
+        {children}
+      </div>
     </LanguageContext.Provider>
   )
 }

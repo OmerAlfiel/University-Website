@@ -149,7 +149,7 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className="container px-0 flex flex-col">
+    <div dir={language === "ar" ? "rtl" : "ltr"} className={`container px-0 flex flex-col ${language === "ar" ? "text-right" : "text-left"}`}>
       {/* Header */}
       <div className="text-center mb-12 px-4 md:px-8">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl mb-4">{t("about")}</h1>
@@ -170,7 +170,7 @@ export default function AboutPage() {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-          <div className="absolute bottom-8 left-8 text-white">
+          <div className={`absolute bottom-8 ${language === "ar" ? "right-8 text-right" : "left-8 text-left"} text-white`}>
             <h2 className="text-3xl font-bold mb-2">
               {language === "ar" ? "حرم كلية الجزيرة للتكنولوجيا" : "Gezira College of Technology Campus"}
             </h2>
@@ -240,7 +240,7 @@ export default function AboutPage() {
 
       {/* Facilities */}
       <section className="mb-16 px-4 md:px-8">
-        <h2 className="text-3xl font-bold mb-8 text-center">{language === "ar" ? "مرافقنا" : "Our Facilities"}</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center">{t("facilities")}</h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {facilities.map((facility, index) => (
             <Card key={index} className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
@@ -262,19 +262,22 @@ export default function AboutPage() {
       <section className="mb-16 px-4 md:px-8">
         <h2 className="text-3xl font-bold mb-8 text-center">{t("history")}</h2>
         <div className="relative">
-          <div className="absolute left-4 md:left-1/2 md:transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-border"></div>
+          <div className={`absolute ${language === "ar" ? "right-4 md:right-1/2 md:translate-x-px" : "left-4 md:left-1/2 md:-translate-x-px"} top-0 bottom-0 w-0.5 bg-border`}></div>
           <div className="space-y-8">
             {achievements.map((achievement, index) => (
               <div key={index} className="relative flex items-center">
-                <div className="absolute left-0 md:left-1/2 md:transform md:-translate-x-1/2 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                <div className={`absolute ${language === "ar" ? "right-0 md:right-1/2 md:translate-x-1/2" : "left-0 md:left-1/2 md:-translate-x-1/2"} w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center shadow-lg`}>
                   <Award className="h-4 w-4 text-white" />
                 </div>
                 <div
-                  className={`ml-12 md:ml-0 ${index % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8"} md:w-1/2 ${index % 2 === 1 ? "md:ml-auto" : ""}`}
+                  className={`${language === "ar" ? 
+                    `mr-12 md:mr-0 ${index % 2 === 0 ? "md:pl-8 md:text-left" : "md:pr-8 md:text-right"} md:w-1/2 ${index % 2 === 1 ? "md:mr-auto" : ""}` : 
+                    `ml-12 md:ml-0 ${index % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8"} md:w-1/2 ${index % 2 === 1 ? "md:ml-auto" : ""}`
+                  }`}
                 >
-                  <Card className="shadow-lg">
+                  <Card className={`shadow-lg ${language === "ar" ? "text-right" : "text-left"}`}>
                     <CardHeader>
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className={`flex items-center gap-2 mb-2 ${language === "ar" ? "justify-start" : ""}`}>
                         <span className="text-2xl font-bold text-blue-600">{achievement.year}</span>
                       </div>
                       <CardTitle className="text-lg">{achievement.title}</CardTitle>
@@ -322,7 +325,7 @@ export default function AboutPage() {
       </section>
 
       {/* Statistics */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 p-8 md:p-12 text-white w-full h-auto flex-1 flex flex-col justify-center">
+      <section className={`${language === "ar" ? "bg-gradient-to-l" : "bg-gradient-to-r"} from-blue-600 to-blue-800 p-8 md:p-12 text-white w-full h-auto flex-1 flex flex-col justify-center`}>
         <h2 className="text-3xl font-bold mb-8 text-center">{t("byTheNumbers")}</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center">
