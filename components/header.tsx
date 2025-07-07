@@ -32,8 +32,9 @@ import {
   Phone,
   Mail,
   Calendar,
+  ChevronDown,
 } from "lucide-react"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 
 export function Header() {
   const { t, language } = useLanguage()
@@ -50,6 +51,7 @@ export function Header() {
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [showResults, setShowResults] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [showAcademicsSubmenu, setShowAcademicsSubmenu] = useState(false)
   
   // Handle header scroll effect using React state
   useEffect(() => {
@@ -484,32 +486,61 @@ export function Header() {
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[380px] sm:w-[420px]">
-                <nav className="flex flex-col space-y-8 mt-12">
+              <SheetContent side="right" className="w-[380px] sm:w-[420px] overflow-y-auto z-[9999]">
+                {/* SheetTitle is required for accessibility */}
+                <div className="sr-only">
+                  <SheetTitle>Navigation Menu</SheetTitle>
+                </div>
+                <nav className="flex flex-col space-y-6 mt-12 pb-16">
                   <Link href="/" onClick={() => setIsOpen(false)} className="text-xl font-bold hover:text-blue-600">
                     {t("home")}
                   </Link>
-                  <div className="space-y-6">
-                    <Link
-                      href="/academics"
-                      onClick={() => setIsOpen(false)}
-                      className="text-xl font-bold hover:text-blue-600 block"
-                    >
-                      {t("academics")}
-                    </Link>
-                    <div className="pl-6 space-y-4 border-l-2 border-blue-200 dark:border-blue-800">
-                      {academicsMenuItems.map((item, index) => (
-                        <Link
-                          key={index}
-                          href={item.href}
-                          onClick={() => setIsOpen(false)}
-                          className="text-base text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 block"
-                        >
-                          {language === "ar" ? item.titleAr : item.title}
-                        </Link>
-                      ))}
+                  
+                  {/* Academics with Accordion-like behavior */}
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <button 
+                        className="text-xl font-bold hover:text-blue-600 flex items-center gap-2"
+                        onClick={() => setShowAcademicsSubmenu(!showAcademicsSubmenu)}
+                      >
+                        {t("academics")}
+                        <ChevronDown className={`h-5 w-5 transition-transform ${showAcademicsSubmenu ? 'rotate-180' : ''}`} />
+                      </button>
+                      <Link 
+                        href="/academics" 
+                        onClick={() => setIsOpen(false)}
+                        className="text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                      >
+                        {language === "ar" ? "عرض الكل" : "View All"}
+                      </Link>
                     </div>
+                    
+                    {showAcademicsSubmenu && (
+                      <div className="pl-6 space-y-4 border-l-2 border-blue-200 dark:border-blue-800 max-h-[40vh] overflow-y-auto pr-2">
+                        {academicsMenuItems.map((item, index) => (
+                          <div key={index} className="flex gap-3 py-2">
+                            <div className={`h-8 w-8 rounded-lg flex items-center justify-center ${item.color} flex-shrink-0`}>
+                              <item.icon className="h-4 w-4" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <Link
+                                href={item.href}
+                                onClick={() => setIsOpen(false)}
+                                className="text-base font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 block"
+                              >
+                                {language === "ar" ? item.titleAr : item.title}
+                              </Link>
+                              <p className="text-xs text-gray-600 dark:text-gray-400 truncate">
+                                {language === "ar" ? item.descriptionAr : item.description}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
+                  
+                  {/* Other navigation links */}
                   {["news", "events", "gallery", "about", "contact"].map((item) => (
                     <Link
                       key={item}
@@ -520,10 +551,29 @@ export function Header() {
                       {item === "gallery" ? (language === "ar" ? "معرض الصور" : "Gallery") : t(item)}
                     </Link>
                   ))}
+                  
+                  {/* Header actions in mobile menu */}
+                  <div className="flex items-center gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-11 w-11 rounded-lg hover:bg-blue-50/80 dark:hover:bg-blue-950/50"
+                      onClick={() => {
+                        setIsOpen(false);
+                        setIsSearchOpen(true);
+                      }}
+                    >
+                      <Search className="h-5 w-5" />
+                      <span className="sr-only">Search</span>
+                    </Button>
+                    
+                    <ModeToggle />
+                    <LanguageToggle />
+                  </div>
       
                   <Button
                     asChild
-                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-2xl font-semibold mt-8"
+                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-2xl font-semibold mt-4 w-full"
                   >
                     <Link href="/contact" onClick={() => setIsOpen(false)}>
                       {language === "ar" ? "تقدم الآن" : "Apply Now"}
@@ -536,7 +586,7 @@ export function Header() {
         </div>
       </header>
       {isSearchOpen && (
-        <div className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-lg overflow-y-auto max-h-screen">
+        <div className="fixed inset-0 z-[9998] bg-black/60 backdrop-blur-lg overflow-y-auto max-h-screen">
           <div className="container mx-auto px-6 py-20">
             <div className="max-w-4xl mx-auto">
               <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl p-10">
