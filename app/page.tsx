@@ -113,9 +113,9 @@ const academicHighlights = [
     <div className="flex flex-col items-center w-full">
       {/* Hero Section - Enhanced to Start Below Header */}
       <AnimatedSection animation="fade-up">
-        <section className="relative w-full pt-20 md:pt-28 lg:pt-32 pb-16 md:pb-24 lg:pb-32 flex items-center bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-gray-950 dark:via-gray-900 dark:to-blue-950/20">
+        <section className="relative w-full pt-20 md:pt-28 lg:pt-32 pb-16 md:pb-24 lg:pb-32 flex items-center bg-gradient-to-br from-slate-50/70 via-white/70 to-blue-50/70 dark:from-gray-950/70 dark:via-gray-900/70 dark:to-blue-950/20">
           <FloatingElements />
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80')] bg-cover bg-center opacity-5"></div>
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80')] bg-cover bg-center opacity-30"></div>
           <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
             <div className="grid gap-8 md:gap-10 lg:grid-cols-[1fr_auto] lg:gap-12 items-center">
               <div className="flex flex-col justify-center space-y-4 sm:space-y-6 md:space-y-8">

@@ -118,7 +118,7 @@ export default function BusinessAdministrationPage() {
       titleAr: "أستاذ إدارة الأعمال",
       specialization: "Strategic Management & Leadership",
       specializationAr: "الإدارة الاستراتيجية والقيادة",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&auto=format&fit=crop&crop=face",
     },
     {
       name: "Dr. Fatima Mohamed",
@@ -127,7 +127,7 @@ export default function BusinessAdministrationPage() {
       titleAr: "أستاذة مشاركة",
       specialization: "Marketing & Consumer Behavior",
       specializationAr: "التسويق وسلوك المستهلك",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&auto=format&fit=crop&crop=face",
     },
     {
       name: "Dr. Omar Ali",
@@ -136,7 +136,7 @@ export default function BusinessAdministrationPage() {
       titleAr: "أستاذ مساعد",
       specialization: "Finance & Investment",
       specializationAr: "المالية والاستثمار",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=200&h=200&auto=format&fit=crop&crop=face",
     },
   ]
 
@@ -209,11 +209,11 @@ export default function BusinessAdministrationPage() {
             </div>
             <div className="relative order-first lg:order-last">
               <Image
-                src="/placeholder.svg?height=500&width=600"
-                alt="Business Administration"
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop"
+                alt="Business Administration - Modern Office Building"
                 width={600}
                 height={500}
-                className="rounded-2xl shadow-2xl w-full"
+                className="rounded-2xl shadow-2xl w-full object-cover"
               />
               <div className="absolute -bottom-4 md:-bottom-6 -left-4 md:-left-6 bg-white dark:bg-gray-800 rounded-xl p-3 md:p-4 shadow-xl">
                 <div className="flex items-center gap-3">

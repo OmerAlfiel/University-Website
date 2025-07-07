@@ -112,7 +112,7 @@ export default function ArchitecturePage() {
       titleAr: "أستاذ العمارة",
       specialization: "Sustainable Design & Urban Planning",
       specializationAr: "التصميم المستدام والتخطيط العمراني",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=400&auto=format&fit=crop",
     },
     {
       name: "Dr. Maryam Ibrahim",
@@ -121,7 +121,7 @@ export default function ArchitecturePage() {
       titleAr: "أستاذة مشاركة",
       specialization: "Interior Design & Heritage Architecture",
       specializationAr: "التصميم الداخلي والعمارة التراثية",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop",
     },
     {
       name: "Dr. Hassan Ali",
@@ -130,7 +130,7 @@ export default function ArchitecturePage() {
       titleAr: "أستاذ مساعد",
       specialization: "Digital Architecture & Smart Buildings",
       specializationAr: "العمارة الرقمية والمباني الذكية",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop",
     },
   ]
 
@@ -203,7 +203,7 @@ export default function ArchitecturePage() {
             </div>
             <div className="relative order-first lg:order-last">
               <Image
-                src="/placeholder.svg?height=500&width=600"
+                src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1200&auto=format&fit=crop"
                 alt="Architecture Studio"
                 width={600}
                 height={500}
@@ -361,7 +361,7 @@ export default function ArchitecturePage() {
                 <CardHeader className="pb-4">
                   <div className="mx-auto w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden mb-4">
                     <Image
-                      src={member.image || "/placeholder.svg"}
+                      src={member.image || "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop"}
                       alt={language === "ar" ? member.nameAr : member.name}
                       width={96}
                       height={96}

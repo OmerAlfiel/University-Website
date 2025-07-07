@@ -7,6 +7,7 @@ import { useLanguage } from "@/components/language-provider"
 import { AnimatedSection } from "@/components/animated-section"
 import { TrendingUp, Clock, Users, Award, BarChart3, Globe, DollarSign, Target, Building } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function EconomicSciencesPage() {
   const { language } = useLanguage()
@@ -148,8 +149,17 @@ export default function EconomicSciencesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-yellow-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
       {/* Hero Section */}
-      <AnimatedSection className="relative overflow-hidden bg-gradient-to-br from-orange-600 via-orange-700 to-red-700 text-white">
-        <div className="absolute inset-0 bg-black/20" />
+      <AnimatedSection className="relative overflow-hidden text-white">
+        <div className="absolute inset-0">
+          <Image 
+            src="https://images.unsplash.com/photo-1535320903710-d993d3d77d29?w=1920&h=1080&auto=format&fit=crop"
+            alt="Economic Sciences"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-600/90 via-orange-700/80 to-red-700/90" />
+        </div>
         <div className="container relative z-10 px-6 py-24">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex justify-center mb-6">
@@ -217,12 +227,30 @@ export default function EconomicSciencesPage() {
               {specializations.map((spec, index) => (
                 <Card
                   key={index}
-                  className="border-2 hover:border-orange-200 dark:hover:border-orange-800 transition-all duration-300 text-center"
+                  className="border-2 hover:border-orange-200 dark:hover:border-orange-800 transition-all duration-300 text-center overflow-hidden"
                 >
-                  <CardHeader>
-                    <div className="h-16 w-16 bg-orange-100 dark:bg-orange-900/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                      <spec.icon className="h-8 w-8 text-orange-600" />
+                  <div className="h-40 relative">
+                    <Image
+                      src={
+                        index === 0
+                          ? "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&auto=format&fit=crop"
+                          : index === 1
+                          ? "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&auto=format&fit=crop"
+                          : index === 2
+                          ? "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=400&h=300&auto=format&fit=crop"
+                          : "https://images.unsplash.com/photo-1494961104209-3c223057bd26?w=400&h=300&auto=format&fit=crop"
+                      }
+                      alt={language === "ar" ? spec.titleAr : spec.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20 flex items-end p-4">
+                      <div className="h-12 w-12 bg-orange-100/90 rounded-full flex items-center justify-center mb-4">
+                        <spec.icon className="h-6 w-6 text-orange-600" />
+                      </div>
                     </div>
+                  </div>
+                  <CardHeader className="pb-2">
                     <CardTitle className="text-lg">{language === "ar" ? spec.titleAr : spec.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -292,25 +320,34 @@ export default function EconomicSciencesPage() {
               {careerPaths.map((career, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300 border-2 hover:border-orange-200 dark:hover:border-orange-800"
+                  className="hover:shadow-xl transition-all duration-300 border-2 hover:border-orange-200 dark:hover:border-orange-800 overflow-hidden"
                 >
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <CardTitle className="text-xl mb-2">
-                          {language === "ar" ? career.titleAr : career.title}
-                        </CardTitle>
-                        <div className="flex items-center text-green-600 font-semibold">
-                          <DollarSign className="h-4 w-4 mr-1" />
-                          {career.salary}
-                        </div>
-                      </div>
-                      <div className="h-12 w-12 bg-orange-100 dark:bg-orange-900/20 rounded-xl flex items-center justify-center">
-                        <BarChart3 className="h-6 w-6 text-orange-600" />
+                  <div className="relative h-40">
+                    <Image 
+                      src={
+                        index === 0
+                          ? "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500&h=300&auto=format&fit=crop"
+                          : index === 1
+                          ? "https://images.unsplash.com/photo-1554224155-8d04cb21cd64?w=500&h=300&auto=format&fit=crop"
+                          : index === 2
+                          ? "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=500&h=300&auto=format&fit=crop"
+                          : "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&auto=format&fit=crop"
+                      }
+                      alt={language === "ar" ? career.titleAr : career.title}
+                      fill
+                      className="object-cover transition-all duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black to-transparent p-4">
+                      <CardTitle className="text-xl text-white mb-1">
+                        {language === "ar" ? career.titleAr : career.title}
+                      </CardTitle>
+                      <div className="flex items-center text-green-400 font-semibold">
+                        <DollarSign className="h-4 w-4 mr-1" />
+                        {career.salary}
                       </div>
                     </div>
-                  </CardHeader>
-                  <CardContent>
+                  </div>
+                  <CardContent className="pt-4">
                     <p className="text-gray-600 dark:text-gray-300">
                       {language === "ar" ? career.descriptionAr : career.description}
                     </p>
@@ -341,10 +378,20 @@ export default function EconomicSciencesPage() {
               {faculty.map((member, index) => (
                 <Card key={index} className="text-center hover:shadow-lg transition-all duration-300">
                   <CardHeader>
-                    <div className="h-20 w-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-2xl font-bold text-white">
-                        {(language === "ar" ? member.nameAr : member.name).charAt(0)}
-                      </span>
+                    <div className="h-24 w-24 rounded-full overflow-hidden mx-auto mb-4">
+                      <Image 
+                        src={
+                          index === 0
+                            ? "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&auto=format&fit=crop&crop=faces"
+                            : index === 1
+                            ? "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&auto=format&fit=crop&crop=faces"
+                            : "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=300&h=300&auto=format&fit=crop&crop=faces"
+                        }
+                        alt={language === "ar" ? member.nameAr : member.name}
+                        width={200}
+                        height={200}
+                        className="object-cover"
+                      />
                     </div>
                     <CardTitle className="text-xl">{language === "ar" ? member.nameAr : member.name}</CardTitle>
                     <CardDescription className="text-base font-medium">

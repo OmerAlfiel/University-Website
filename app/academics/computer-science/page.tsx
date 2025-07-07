@@ -119,7 +119,7 @@ export default function ComputerSciencePage() {
       titleAr: "أستاذ علوم الحاسوب",
       specialization: "Artificial Intelligence & Machine Learning",
       specializationAr: "الذكاء الاصطناعي والتعلم الآلي",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=200&h=200&auto=format&fit=crop&crop=face",
     },
     {
       name: "Dr. Sarah Mohamed",
@@ -128,7 +128,7 @@ export default function ComputerSciencePage() {
       titleAr: "أستاذ مشارك",
       specialization: "Software Engineering & Data Science",
       specializationAr: "هندسة البرمجيات وعلوم البيانات",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&auto=format&fit=crop&crop=face",
     },
     {
       name: "Dr. Omar Ali",
@@ -137,7 +137,7 @@ export default function ComputerSciencePage() {
       titleAr: "أستاذ مساعد",
       specialization: "Cybersecurity & Network Systems",
       specializationAr: "الأمن السيبراني وأنظمة الشبكات",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=200&h=200&auto=format&fit=crop&crop=face",
     },
   ]
 
@@ -148,7 +148,7 @@ export default function ComputerSciencePage() {
         language === "ar"
           ? "مجهز بأحدث أجهزة الكمبيوتر وبيئات التطوير المتكاملة"
           : "Equipped with latest computers and integrated development environments",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=400&auto=format&fit=crop",
     },
     {
       name: language === "ar" ? "مختبر الذكاء الاصطناعي" : "AI Research Lab",
@@ -156,7 +156,7 @@ export default function ComputerSciencePage() {
         language === "ar"
           ? "مختبر متخصص للبحث في الذكاء الاصطناعي والتعلم الآلي"
           : "Specialized lab for AI and machine learning research",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=400&auto=format&fit=crop",
     },
     {
       name: language === "ar" ? "مركز الابتكار التقني" : "Tech Innovation Center",
@@ -164,7 +164,7 @@ export default function ComputerSciencePage() {
         language === "ar"
           ? "مساحة للطلاب لتطوير مشاريعهم التقنية والشركات الناشئة"
           : "Space for students to develop tech projects and startups",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://images.unsplash.com/photo-1568992688065-536aad8a12f6?w=600&h=400&auto=format&fit=crop",
     },
   ]
 
@@ -214,11 +214,11 @@ export default function ComputerSciencePage() {
             </div>
             <div className="relative">
               <Image
-                src="/placeholder.svg?height=500&width=600"
+                src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?q=80&w=1200&auto=format&fit=crop"
                 alt="Computer Science Lab"
                 width={600}
                 height={500}
-                className="rounded-2xl shadow-2xl"
+                className="rounded-2xl shadow-2xl object-cover"
               />
               <div className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 rounded-xl p-4 shadow-xl">
                 <div className="flex items-center gap-3">

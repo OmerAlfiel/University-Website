@@ -40,12 +40,12 @@ export default function ContactPage() {
     {
       icon: MapPin,
       title: t("address"),
-      details: ["Gezira Island, Khartoum", "Sudan", "P.O. Box 12345"],
+      details: [t("Gezira Island, Khartoum"), t("Sudan"), t("P.O. Box 12345")],
     },
     {
       icon: Phone,
       title: t("phone"),
-      details: ["+249 123 456 789", "+249 987 654 321", "Fax: +249 111 222 333"],
+      details: [t("Phone: +249-123-456-789"), t("Phone: +249-987-654-321"), t("Fax: +249-111-222-333")],
     },
     {
       icon: Mail,
@@ -54,34 +54,34 @@ export default function ContactPage() {
     },
     {
       icon: Clock,
-      title: "Office Hours",
-      details: ["Sunday - Thursday: 8:00 AM - 4:00 PM", "Friday: 8:00 AM - 12:00 PM", "Saturday: Closed"],
+      title: t("officeHours"),
+      details: [t("Sunday - Thursday: 8:00 AM - 4:00 PM"), t("Friday: 8:00 AM - 12:00 PM"), t("Saturday: Closed")],
     },
   ]
 
   const departments = [
     {
-      name: "Admissions Office",
+      name: "admissionsOffice",
       email: "admissions@gct.edu.sd",
-      phone: "+249 123 456 789",
+      phone: "+249-123-456-789",
       description: "For inquiries about applications, enrollment, and academic requirements.",
     },
     {
-      name: "Student Affairs",
+      name: "studentAffairs",
       email: "students@gct.edu.sd",
-      phone: "+249 123 456 790",
+      phone: "+249-123-456-790",
       description: "For current students regarding academic support, activities, and services.",
     },
     {
-      name: "Research Office",
+      name: "researchOffice",
       email: "research@gct.edu.sd",
-      phone: "+249 123 456 791",
+      phone: "+249-123-456-791",
       description: "For research collaborations, publications, and academic partnerships.",
     },
     {
-      name: "International Relations",
+      name: "internationalRelations",
       email: "international@gct.edu.sd",
-      phone: "+249 123 456 792",
+      phone: "+249-123-456-792",
       description: "For international students, exchange programs, and global partnerships.",
     },
   ]
@@ -92,7 +92,7 @@ export default function ContactPage() {
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">{t("contact")}</h1>
         <p className="mt-4 text-muted-foreground md:text-xl max-w-3xl mx-auto">
-          {t("getInTouch")} - We're here to help with any questions or inquiries you may have
+          {t("getInTouch")}
         </p>
       </div>
 
@@ -102,7 +102,7 @@ export default function ContactPage() {
           <Card>
             <CardHeader>
               <CardTitle className="text-2xl">{t("sendMessage")}</CardTitle>
-              <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
+              <CardDescription>{t("Fill out the form below and we'll get back to you as soon as possible.")}</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -115,7 +115,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      placeholder="Your full name"
+                      placeholder={t("Your full name")}
                     />
                   </div>
                   <div className="space-y-2">
@@ -132,14 +132,14 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="subject">Subject *</Label>
+                  <Label htmlFor="subject">{t("subject")} *</Label>
                   <Input
                     id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    placeholder="What is this regarding?"
+                    placeholder={t("What is this regarding?")}
                   />
                 </div>
                 <div className="space-y-2">
@@ -150,7 +150,7 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    placeholder="Please provide details about your inquiry..."
+                    placeholder={t("Please provide details about your inquiry...")}
                     rows={6}
                   />
                 </div>
@@ -193,26 +193,28 @@ export default function ContactPage() {
 
       {/* Departments */}
       <section className="mt-16">
-        <h2 className="text-3xl font-bold mb-8 text-center">Department Contacts</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center">{t("Department Contacts")}</h2>
         <div className="grid gap-6 md:grid-cols-2">
           {departments.map((dept, index) => (
             <Card key={index}>
               <CardHeader>
-                <CardTitle className="text-lg">{dept.name}</CardTitle>
-                <CardDescription>{dept.description}</CardDescription>
+                <CardTitle className="text-lg">{t(dept.name)}</CardTitle>
+                <CardDescription>{t(dept.description)}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm">
                     <Mail className="h-4 w-4 text-primary" />
+                    <span className="text-muted-foreground">{t("Email")}: </span>
                     <a href={`mailto:${dept.email}`} className="text-primary hover:underline">
                       {dept.email}
                     </a>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Phone className="h-4 w-4 text-primary" />
+                    <span className="text-muted-foreground">{t("Phone")}: </span>
                     <a href={`tel:${dept.phone}`} className="text-primary hover:underline">
-                      {dept.phone}
+                      {t(dept.phone.replace(/-/g, " "))}
                     </a>
                   </div>
                 </div>
@@ -224,15 +226,21 @@ export default function ContactPage() {
 
       {/* Map Section */}
       <section className="mt-16">
-        <h2 className="text-3xl font-bold mb-8 text-center">Find Us</h2>
-        <div className="h-[600px]">
-          <Map 
-            longitude={32.5599} 
-            latitude={15.5007} 
-            zoom={15}
-            className="rounded-lg"
-          />
-        </div>
+        <h2 className="text-3xl font-bold mb-8 text-center">{t("findUs")}</h2>
+        <Card className="overflow-hidden">
+          <CardHeader>
+            <CardTitle>{t("Campus Location")}</CardTitle>
+            <CardDescription>{t("Visit our main campus at Gezira Island, Khartoum")}</CardDescription>
+          </CardHeader>
+          <div className="h-[600px]">
+            <Map 
+              longitude={32.5599} 
+              latitude={15.5007} 
+              zoom={15}
+              className="rounded-b-lg"
+            />
+          </div>
+        </Card>
       </section>
     </div>
   )

@@ -107,7 +107,7 @@ export default function NursingPage() {
       titleAr: "أستاذة التمريض",
       specialization: "Critical Care & Emergency Nursing",
       specializationAr: "العناية المركزة وتمريض الطوارئ",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&crop=faces&facepad=2",
     },
     {
       name: "Dr. Aisha Mohamed",
@@ -116,7 +116,7 @@ export default function NursingPage() {
       titleAr: "أستاذة مشاركة",
       specialization: "Pediatric & Maternity Nursing",
       specializationAr: "تمريض الأطفال والأمومة",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&crop=faces&facepad=2",
     },
     {
       name: "Dr. Maryam Ali",
@@ -125,7 +125,7 @@ export default function NursingPage() {
       titleAr: "أستاذة مساعدة",
       specialization: "Community Health & Psychiatric Nursing",
       specializationAr: "صحة المجتمع والتمريض النفسي",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&crop=faces&facepad=2",
     },
   ]
 
@@ -136,7 +136,7 @@ export default function NursingPage() {
         language === "ar"
           ? "مختبر مجهز بأحدث المعدات الطبية لتدريب الطلاب"
           : "Laboratory equipped with latest medical equipment for student training",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://images.unsplash.com/photo-1581594549595-35f6edc7b762?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200",
     },
     {
       name: language === "ar" ? "وحدة المحاكاة الطبية" : "Medical Simulation Unit",
@@ -144,7 +144,7 @@ export default function NursingPage() {
         language === "ar"
           ? "بيئة محاكاة واقعية لتدريب الطلاب على الحالات الطارئة"
           : "Realistic simulation environment for emergency case training",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200",
     },
     {
       name: language === "ar" ? "مستشفى التدريب" : "Training Hospital",
@@ -152,7 +152,7 @@ export default function NursingPage() {
         language === "ar"
           ? "شراكة مع المستشفيات المحلية للتدريب العملي"
           : "Partnership with local hospitals for practical training",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200",
     },
   ]
 
@@ -225,7 +225,7 @@ export default function NursingPage() {
             </div>
             <div className="relative">
               <Image
-                src="/placeholder.svg?height=500&width=600"
+                src="https://images.unsplash.com/photo-1584515933487-779824d29309?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=500"
                 alt="Nursing Lab"
                 width={600}
                 height={500}

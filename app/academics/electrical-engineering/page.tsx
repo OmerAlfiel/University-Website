@@ -103,7 +103,7 @@ export default function ElectricalEngineeringPage() {
       titleAr: "أستاذ الهندسة الكهربائية",
       specialization: "Power Systems & Smart Grids",
       specializationAr: "أنظمة الطاقة والشبكات الذكية",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&auto=format&fit=crop&crop=faces",
     },
     {
       name: "Dr. Amina Hassan",
@@ -112,7 +112,7 @@ export default function ElectricalEngineeringPage() {
       titleAr: "أستاذة مشاركة",
       specialization: "Electronics & Communications",
       specializationAr: "الإلكترونيات والاتصالات",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=300&h=300&auto=format&fit=crop&crop=faces",
     },
     {
       name: "Dr. Khalid Mohamed",
@@ -121,7 +121,7 @@ export default function ElectricalEngineeringPage() {
       titleAr: "أستاذ مساعد",
       specialization: "Control Systems & Automation",
       specializationAr: "أنظمة التحكم والأتمتة",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&auto=format&fit=crop&crop=faces",
     },
   ]
 
@@ -194,11 +194,11 @@ export default function ElectricalEngineeringPage() {
             </div>
             <div className="relative order-first lg:order-last">
               <Image
-                src="/placeholder.svg?height=500&width=600"
+                src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=1200&h=800&auto=format&fit=crop"
                 alt="Electrical Engineering Lab"
                 width={600}
                 height={500}
-                className="rounded-2xl shadow-2xl w-full"
+                className="rounded-2xl shadow-2xl w-full object-cover"
               />
               <div className="absolute -bottom-4 md:-bottom-6 -left-4 md:-left-6 bg-white dark:bg-gray-800 rounded-xl p-3 md:p-4 shadow-xl">
                 <div className="flex items-center gap-3">
@@ -311,12 +311,30 @@ export default function ElectricalEngineeringPage() {
             {careerPaths.map((career, index) => (
               <Card
                 key={index}
-                className="text-center border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800 group"
+                className="text-center border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800 group overflow-hidden"
               >
-                <CardHeader className="pb-4">
-                  <div className="mx-auto h-12 w-12 md:h-16 md:w-16 bg-yellow-100 dark:bg-yellow-900/20 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <career.icon className="h-6 w-6 md:h-8 md:w-8 text-yellow-600" />
+                <div className="h-40 relative">
+                  <Image
+                    src={
+                      index === 0
+                        ? "https://images.unsplash.com/photo-1620283085439-39620a1e21c4?w=400&h=200&auto=format&fit=crop"
+                        : index === 1
+                        ? "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=200&auto=format&fit=crop"
+                        : index === 2
+                        ? "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=200&auto=format&fit=crop"
+                        : "https://images.unsplash.com/photo-1549605659-32d82da3a059?w=400&h=200&auto=format&fit=crop"
+                    }
+                    alt={career.title}
+                    fill
+                    className="object-cover transition-transform group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                    <div className="h-14 w-14 bg-yellow-100/90 rounded-full flex items-center justify-center">
+                      <career.icon className="h-7 w-7 text-yellow-600" />
+                    </div>
                   </div>
+                </div>
+                <CardHeader className="pb-2">
                   <CardTitle className="text-base md:text-lg text-gray-900 dark:text-white">{career.title}</CardTitle>
                 </CardHeader>
                 <CardContent>

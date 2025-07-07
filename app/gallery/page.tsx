@@ -402,7 +402,7 @@ export default function GalleryPage() {
                       {/* Date Badge */}
                       <div className="absolute top-3 right-3">
                         <Badge variant="secondary" className="bg-white/90 text-gray-800 text-xs">
-                          {new Date(item.date).toLocaleDateString(language === "ar" ? "ar-SA" : "en-US")}
+                          {new Date(item.date).toLocaleDateString("en-US", { month: 'short', day: 'numeric', year: 'numeric' })}
                         </Badge>
                       </div>
                     </div>
@@ -417,7 +417,7 @@ export default function GalleryPage() {
                       <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
                         <div className="flex items-center gap-1">
                           <Calendar className="h-3 w-3" />
-                          <span>{new Date(item.date).toLocaleDateString(language === "ar" ? "ar-SA" : "en-US")}</span>
+                          <span>{new Date(item.date).toLocaleDateString("en-US", { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                         </div>
                         <div className="flex items-center gap-1">
                           <MapPin className="h-3 w-3" />
@@ -500,7 +500,7 @@ export default function GalleryPage() {
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
                       <span>
-                        {new Date(selectedImage.date).toLocaleDateString(language === "ar" ? "ar-SA" : "en-US")}
+                        {new Date(selectedImage.date).toLocaleDateString("en-US", { month: 'short', day: 'numeric', year: 'numeric' })}
                       </span>
                     </div>
                     <div className="flex items-center gap-1">

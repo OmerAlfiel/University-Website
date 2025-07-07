@@ -18,6 +18,7 @@ import {
   Target,
 } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function MBAPage() {
   const { language } = useLanguage()
@@ -128,8 +129,17 @@ export default function MBAPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
       {/* Hero Section */}
-      <AnimatedSection className="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 text-white">
-        <div className="absolute inset-0 bg-black/20" />
+      <AnimatedSection className="relative overflow-hidden text-white">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop"
+            alt="MBA Program"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-blue-900/70 backdrop-blur-[2px]" />
+        </div>
         <div className="container relative z-10 px-6 py-24">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex justify-center mb-6">
@@ -194,15 +204,20 @@ export default function MBAPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 mb-16">
-              <Card className="border-2 hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className="h-16 w-16 bg-blue-100 dark:bg-blue-900/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Calendar className="h-8 w-8 text-blue-600" />
+              <Card className="border-2 hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 overflow-hidden">
+                <div className="w-full h-48 relative">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=500&auto=format&fit=crop"
+                    alt="Flexible Schedule"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                    <CardTitle className="text-xl text-white">{language === "ar" ? "جدولة مرنة" : "Flexible Schedule"}</CardTitle>
                   </div>
-                  <CardTitle className="text-xl">{language === "ar" ? "جدولة مرنة" : "Flexible Schedule"}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 dark:text-gray-300 text-center">
+                </div>
+                <CardContent className="pt-4">
+                  <p className="text-gray-600 dark:text-gray-300">
                     {language === "ar"
                       ? "فصول مسائية ونهاية الأسبوع للمهنيين العاملين"
                       : "Evening and weekend classes for working professionals"}
@@ -210,15 +225,20 @@ export default function MBAPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-2 hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className="h-16 w-16 bg-green-100 dark:bg-green-900/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Globe className="h-8 w-8 text-green-600" />
+              <Card className="border-2 hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 overflow-hidden">
+                <div className="w-full h-48 relative">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500&auto=format&fit=crop"
+                    alt="Global Perspective"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                    <CardTitle className="text-xl text-white">{language === "ar" ? "منظور عالمي" : "Global Perspective"}</CardTitle>
                   </div>
-                  <CardTitle className="text-xl">{language === "ar" ? "منظور عالمي" : "Global Perspective"}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 dark:text-gray-300 text-center">
+                </div>
+                <CardContent className="pt-4">
+                  <p className="text-gray-600 dark:text-gray-300">
                     {language === "ar"
                       ? "تركيز على الأعمال الدولية والأسواق العالمية"
                       : "Focus on international business and global markets"}
@@ -226,17 +246,22 @@ export default function MBAPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-2 hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className="h-16 w-16 bg-purple-100 dark:bg-purple-900/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Target className="h-8 w-8 text-purple-600" />
+              <Card className="border-2 hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 overflow-hidden">
+                <div className="w-full h-48 relative">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&auto=format&fit=crop"
+                    alt="Practical Application"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                    <CardTitle className="text-xl text-white">
+                      {language === "ar" ? "تطبيق عملي" : "Practical Application"}
+                    </CardTitle>
                   </div>
-                  <CardTitle className="text-xl">
-                    {language === "ar" ? "تطبيق عملي" : "Practical Application"}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 dark:text-gray-300 text-center">
+                </div>
+                <CardContent className="pt-4">
+                  <p className="text-gray-600 dark:text-gray-300">
                     {language === "ar"
                       ? "مشاريع حقيقية ودراسات حالة من الصناعة"
                       : "Real-world projects and industry case studies"}
@@ -352,10 +377,20 @@ export default function MBAPage() {
               {faculty.map((member, index) => (
                 <Card key={index} className="text-center hover:shadow-lg transition-all duration-300">
                   <CardHeader>
-                    <div className="h-20 w-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-2xl font-bold text-white">
-                        {(language === "ar" ? member.nameAr : member.name).charAt(0)}
-                      </span>
+                    <div className="h-24 w-24 rounded-full overflow-hidden mx-auto mb-4">
+                      <Image 
+                        src={
+                          index === 0
+                            ? "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&auto=format&fit=crop&crop=face"
+                            : index === 1
+                            ? "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&auto=format&fit=crop&crop=face"
+                            : "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&h=200&auto=format&fit=crop&crop=face"
+                        }
+                        alt={language === "ar" ? member.nameAr : member.name}
+                        width={200}
+                        height={200}
+                        className="object-cover"
+                      />
                     </div>
                     <CardTitle className="text-xl">{language === "ar" ? member.nameAr : member.name}</CardTitle>
                     <CardDescription className="text-base font-medium">
