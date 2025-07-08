@@ -34,6 +34,7 @@ export default function NewsPage() {
       author: "Prof. Sarah Mohamed",
       category: "Student Achievement",
       image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=400&fit=crop&crop=center",
+      featured: false,
     },
     {
       id: 3,
@@ -44,6 +45,7 @@ export default function NewsPage() {
       author: "Dr. Omar Ali",
       category: "Partnerships",
       image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=400&fit=crop&crop=center",
+      featured: true,
     },
     {
       id: 4,
@@ -54,6 +56,7 @@ export default function NewsPage() {
       author: "Dr. Fatima Ibrahim",
       category: "Infrastructure",
       image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800&h=400&fit=crop&crop=center",
+      featured: false,
     },
     {
       id: 5,
@@ -64,6 +67,7 @@ export default function NewsPage() {
       author: "Dr. Khalid Osman",
       category: "Faculty Achievement",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop&crop=center",
+      featured: false,
     },
     {
       id: 6,
@@ -74,6 +78,7 @@ export default function NewsPage() {
       author: "Ms. Amal Yousif",
       category: "Career Services",
       image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&h=400&fit=crop&crop=center",
+      featured: false,
     },
   ]
 

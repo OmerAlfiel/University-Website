@@ -5,12 +5,51 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useLanguage } from "@/components/language-provider"
-import { GraduationCap, Users, BookOpen, Award, ArrowRight, Play, Star, Globe, Target } from "lucide-react"
+import { GraduationCap, Users, BookOpen, Award, ArrowRight, Star, Globe, Target } from "lucide-react"
 import { AnimatedSection } from "@/components/animated-section"
 import { FloatingElements } from "@/components/floating-elements"
+import React, { useEffect, useState } from "react"
+
+type AnimatedCounterProps = {
+  end: number
+  duration?: number // in ms
+  suffix?: string
+  start?: boolean
+}
+
+const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ end, duration = 700, suffix = "", start = true }) => {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!start) {
+      setCount(0)
+      return
+    }
+    let startVal = 0
+    const increment = end / (duration / 16)
+    const interval = setInterval(() => {
+      startVal += increment
+      if (startVal >= end) {
+        setCount(end)
+        clearInterval(interval)
+      } else {
+        setCount(Math.floor(startVal))
+      }
+    }, 16)
+    return () => clearInterval(interval)
+  }, [end, duration, start])
+
+  return (
+    <span>
+      {count}
+      {suffix}
+    </span>
+  )
+}
 
 export default function HomePage() {
   const { t, language } = useLanguage()
+  const [statsVisible, setStatsVisible] = useState(false)
 
   const features = [
     {
@@ -37,7 +76,7 @@ export default function HomePage() {
 
   const stats = [
     { number: "15+", label: t("programs"), icon: BookOpen },
-    { number: "5,000+", label: t("students"), icon: Users },
+    { number: "5000+", label: t("students"), icon: Users },
     { number: "200+", label: t("faculty"), icon: GraduationCap },
     { number: "15", label: t("yearsOfExcellence"), icon: Star },
   ]
@@ -187,7 +226,11 @@ const academicHighlights = [
       </AnimatedSection>
 
       {/* Stats Section */}
-      <AnimatedSection animation="fade-in" delay={200}>
+      <AnimatedSection 
+        animation="fade-in" 
+        delay={300}
+        onAnimationEnd={() => setStatsVisible(true)}
+      >
         <section className="w-screen py-16 sm:py-20 bg-white dark:bg-gray-900 border-y">
           <div className="w-full px-4 sm:px-6 md:px-8">
             <div className="max-w-7xl mx-auto">
@@ -197,7 +240,13 @@ const academicHighlights = [
                   <div className="mx-auto h-14 w-14 sm:h-16 sm:w-16 bg-blue-100 dark:bg-blue-900/20 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <stat.icon className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600" />
                   </div>
-                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-2">{stat.number}</div>
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-2">
+                    <AnimatedCounter 
+                      end={parseInt(stat.number)} 
+                      suffix={stat.number.replace(/[0-9]/g, "")} 
+                      start={statsVisible}
+                   />
+                  </div>
                   <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium">{stat.label}</div>
                 </div>
               ))}
@@ -209,7 +258,7 @@ const academicHighlights = [
 
       <div className="flex flex-col items-center w-full">
       {/* Academic Highlights */}
-      <AnimatedSection animation="slide-left" delay={400}>
+      <AnimatedSection animation="slide-left" delay={300}>
         <section className="py-24 bg-gray-50 dark:bg-gray-900/50">
           <div className="container px-6 md:px-8">
             <div className="text-center mb-16">
@@ -260,7 +309,7 @@ const academicHighlights = [
       </AnimatedSection>
 
       {/* Features Section */}
-      <AnimatedSection animation="scale-up" delay={600}>
+      <AnimatedSection animation="scale-up" delay={400}>
         <section className="py-24 bg-white dark:bg-gray-900">
           <div className="container px-6 md:px-8">
             <div className="text-center mb-16">
@@ -294,7 +343,7 @@ const academicHighlights = [
       </AnimatedSection>
 
       {/* News Section */}
-      <AnimatedSection animation="slide-right" delay={800}>
+      <AnimatedSection animation="slide-right" delay={500}>
         <section className="py-24 bg-gray-50 dark:bg-gray-900/50">
           <div className="container px-6 md:px-8">
             <div className="flex items-center justify-between mb-12">
@@ -352,7 +401,7 @@ const academicHighlights = [
 
 
       {/* CTA Section */}
-      <AnimatedSection animation="fade-up" delay={900}>
+      <AnimatedSection animation="fade-up" delay={600}>
         <section className="relative py-24 lg:py-32 overflow-hidden">
           {/* Professional background with clearer image */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600/70 via-blue-700/65 to-blue-800/70 z-0"></div>

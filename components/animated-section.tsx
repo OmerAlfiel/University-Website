@@ -9,9 +9,10 @@ interface AnimatedSectionProps {
   className?: string
   animation?: "fade-up" | "fade-in" | "slide-left" | "slide-right" | "scale-up"
   delay?: number
+  onAnimationEnd?: () => void
 }
 
-export function AnimatedSection({ children, className = "", animation = "fade-up", delay = 0 }: AnimatedSectionProps) {
+export function AnimatedSection({ children, className = "", animation = "fade-up", delay = 0, onAnimationEnd }: AnimatedSectionProps) {
   const [isVisible, setIsVisible] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -21,6 +22,9 @@ export function AnimatedSection({ children, className = "", animation = "fade-up
         if (entry.isIntersecting) {
           setTimeout(() => {
             setIsVisible(true)
+            if (onAnimationEnd) {
+              onAnimationEnd()
+            }
           }, delay)
         }
       },
@@ -39,7 +43,7 @@ export function AnimatedSection({ children, className = "", animation = "fade-up
         observer.unobserve(ref.current)
       }
     }
-  }, [delay])
+  }, [delay, onAnimationEnd])
 
   const getAnimationClass = () => {
     const baseClass = "transition-all duration-1000 ease-out"

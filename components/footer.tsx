@@ -16,9 +16,6 @@ import {
   Youtube,
   Send,
   GraduationCap,
-  Users,
-  BookOpen,
-  Award,
   Globe,
   ArrowRight,
   Shield,
@@ -61,12 +58,12 @@ export function Footer() {
     { name: "YouTube", icon: Youtube, href: "https://youtube.com", color: "hover:text-red-600" },
   ]
 
-  const stats = [
-    { number: "15+", label: language === "ar" ? "برنامج أكاديمي" : "Academic Programs", icon: BookOpen },
-    { number: "5,000+", label: language === "ar" ? "طالب" : "Students", icon: Users },
-    { number: "200+", label: language === "ar" ? "عضو هيئة تدريس" : "Faculty Members", icon: GraduationCap },
-    { number: "98%", label: language === "ar" ? "معدل التوظيف" : "Employment Rate", icon: Award },
-  ]
+  // const stats = [
+  //   { number: "15+", label: language === "ar" ? "برنامج أكاديمي" : "Academic Programs", icon: BookOpen },
+  //   { number: "5000+", label: language === "ar" ? "طالب" : "Students", icon: Users },
+  //   { number: "200+", label: language === "ar" ? "عضو هيئة تدريس" : "Faculty Members", icon: GraduationCap },
+  //   { number: "98%", label: language === "ar" ? "معدل التوظيف" : "Employment Rate", icon: Award },
+  // ]
 
   const accreditations = [
     { name: "ISO 9001:2015", icon: Shield },
@@ -124,7 +121,9 @@ export function Footer() {
       </div>
 
       {/* Stats Section */}
-      <div className="border-b border-white/10 relative z-10">
+      {/*
+
+       <div className="border-b border-white/10 relative z-10">
         <div className="container px-6 md:px-8 py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {stats.map((stat, index) => (
@@ -139,6 +138,8 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      */}
 
       {/* Main Footer Content */}
       <div className="container px-6 md:px-8 py-16 relative z-10">
@@ -238,9 +239,9 @@ export function Footer() {
                 <div className="h-8 w-8 bg-blue-600/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                   <MapPin className="h-4 w-4 text-blue-400" />
                 </div>
-                <div className="text-gray-300 text-sm">
-                  <p>Gezira Island, Khartoum</p>
-                  <p>Sudan, P.O. Box 12345</p>
+                <div className="text-gray-300 text-sm flex-1 min-w-0 text-left">
+                  <p className="break-words">Gezira Island, Khartoum</p>
+                  <p className="break-words">Sudan, P.O. Box 12345</p>
                 </div>
               </div>
 
@@ -248,9 +249,9 @@ export function Footer() {
                 <div className="h-8 w-8 bg-blue-600/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                   <Phone className="h-4 w-4 text-blue-400" />
                 </div>
-                <div className="text-gray-300 text-sm">
-                  <p>+249 123 456 789</p>
-                  <p>+249 987 654 321</p>
+                <div className="text-gray-300 text-sm flex-1 min-w-0 text-left">
+                  <p className="break-words">+249 123 456 789</p>
+                  <p className="break-words">+249 987 654 321</p>
                 </div>
               </div>
 
@@ -258,9 +259,9 @@ export function Footer() {
                 <div className="h-8 w-8 bg-blue-600/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                   <Mail className="h-4 w-4 text-blue-400" />
                 </div>
-                <div className="text-gray-300 text-sm">
-                  <p>info@gct.edu.sd</p>
-                  <p>admissions@gct.edu.sd</p>
+                <div className="text-gray-300 text-sm flex-1 min-w-0 text-left">
+                  <p className="break-words">info@gct.edu.sd</p>
+                  <p className="break-words">admissions@gct.edu.sd</p>
                 </div>
               </div>
 
@@ -268,9 +269,9 @@ export function Footer() {
                 <div className="h-8 w-8 bg-blue-600/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                   <Clock className="h-4 w-4 text-blue-400" />
                 </div>
-                <div className="text-gray-300 text-sm">
-                  <p>{language === "ar" ? "الأحد - الخميس" : "Sun - Thu"}</p>
-                  <p>8:00 AM - 4:00 PM</p>
+                <div className="text-gray-300 text-sm flex-1 min-w-0 text-left">
+                  <p className="break-words">{language === "ar" ? "الأحد - الخميس" : "Sun - Thu"}</p>
+                  <p className="break-words">8:00 AM - 4:00 PM</p>
                 </div>
               </div>
             </div>
@@ -330,7 +331,7 @@ export function Footer() {
                 {language === "ar" ? "جميع الحقوق محفوظة" : "All rights reserved"}.
               </p>
             </div>
-            <div className="flex flex-wrap items-center gap-6 text-sm text-gray-400">
+            <div className="flex flex-nowrap items-center gap-6 text-sm text-gray-400 overflow-x-auto">
               <Link href="/about" className="hover:text-blue-400 transition-colors">
                 {language === "ar" ? "سياسة الخصوصية" : "Privacy Policy"}
               </Link>
