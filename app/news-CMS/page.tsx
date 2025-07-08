@@ -9,7 +9,7 @@ import NewsClient, { NewsArticle } from "./NewsClient";
 
 async function fetchNews(): Promise<NewsArticle[]> {
   const res = await fetch(
-    "http://gct.local/wp-json/wp/v2/news?per_page=100&_embed",
+    "Your_API_URL/wp-json/wp/v2/news?per_page=100&_embed",
     { cache: "force-cache" }
   );
   const posts = await res.json();

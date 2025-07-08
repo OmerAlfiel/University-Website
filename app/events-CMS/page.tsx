@@ -3,7 +3,7 @@ import EventPage, {Event} from "./events";
 
  async function getStaticProps(): Promise<Event[]> {
   const res = await fetch(
-    "http://gct.local/wp-json/wp/v2/events?_embed",
+    "Your_API_URL/wp-json/wp/v2/events?_embed",
     { cache: "force-cache" }
   );
   const events = await res.json();
