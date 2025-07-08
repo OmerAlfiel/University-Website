@@ -1,5 +1,6 @@
 "use client"
 
+import React, { useState } from "react"
 import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -9,6 +10,8 @@ import { Calendar, User, ArrowRight } from "lucide-react"
 
 export default function NewsPage() {
   const { t } = useLanguage()
+
+  const [selectedNewsCategory, setSelectedNewsCategory] = useState("All")
 
   const newsArticles = [
     {
@@ -84,6 +87,11 @@ export default function NewsPage() {
     "Career Services",
   ]
 
+  const filteredNews =(news: typeof newsArticles) =>
+    selectedNewsCategory === "All"
+      ? news
+      : news.filter((article) => article.category === selectedNewsCategory)
+
   return (
     <div className="container py-8 md:py-12">
       {/* Header */}
@@ -97,14 +105,19 @@ export default function NewsPage() {
       {/* Categories */}
       <div className="flex flex-wrap gap-2 mb-8 justify-center">
         {categories.map((category) => (
-          <Button key={category} variant="outline" size="sm">
+          <Button 
+          key={category}
+          variant={selectedNewsCategory === category ? "default" : "outline"}
+          size="sm"
+          onClick={() => setSelectedNewsCategory(category)}
+          >
             {t(category)}
           </Button>
         ))}
       </div>
 
       {/* Featured Article */}
-      {newsArticles
+      {filteredNews(newsArticles)
         .filter((article) => article.featured)
         .map((article) => (
           <Card key={article.id} className="mb-12 overflow-hidden">
@@ -138,7 +151,7 @@ export default function NewsPage() {
 
       {/* News Grid */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {newsArticles
+        {filteredNews(newsArticles)
           .filter((article) => !article.featured)
           .map((article) => (
             <Card key={article.id} className="overflow-hidden hover:shadow-lg transition-shadow">
@@ -174,7 +187,10 @@ export default function NewsPage() {
 
       {/* Load More */}
       <div className="text-center mt-12">
-        <Button variant="outline" size="lg">
+        <Button 
+        variant="outline" 
+        size="lg"
+        >
           {t("loadMoreArticles")}
         </Button>
       </div>

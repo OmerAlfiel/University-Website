@@ -1,5 +1,6 @@
 "use client"
 
+import React, { useState } from "react"
 import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -9,6 +10,7 @@ import { Calendar, MapPin, Clock, Users, ArrowRight } from "lucide-react"
 
 export default function EventsPage() {
   const { t } = useLanguage()
+  const [selectedCategory, setSelectedCategory] = useState("All")
 
   const upcomingEvents = [
     {
@@ -90,6 +92,12 @@ export default function EventsPage() {
 
   const categories = ["All", "Academic", "Career", "Research", "Student Life", "Ceremony", "Technology"]
 
+    const filterEvents = (events: typeof upcomingEvents) =>
+    selectedCategory === "All"
+      ? events
+      : events.filter((event) => event.category === selectedCategory)
+
+
   return (
     <div className="container py-8 md:py-12">
       {/* Header */}
@@ -103,7 +111,12 @@ export default function EventsPage() {
       {/* Categories */}
       <div className="flex flex-wrap gap-2 mb-8 justify-center">
         {categories.map((category) => (
-          <Button key={category} variant="outline" size="sm">
+          <Button 
+            key={category} 
+            variant={selectedCategory === category ? "default" : "outline"}
+            size="sm"
+            onClick={() => setSelectedCategory(category)}
+            >
             {t(category)}
           </Button>
         ))}
@@ -114,7 +127,7 @@ export default function EventsPage() {
         <h2 className="text-3xl font-bold mb-8">{t("upcomingEvents")}</h2>
 
         {/* Featured Event */}
-        {upcomingEvents
+        {filterEvents(upcomingEvents)
           .filter((event) => event.featured)
           .map((event) => (
             <Card key={event.id} className="mb-8 overflow-hidden">
@@ -157,7 +170,7 @@ export default function EventsPage() {
 
         {/* Other Upcoming Events */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {upcomingEvents
+          {filterEvents(upcomingEvents)
             .filter((event) => !event.featured)
             .map((event) => (
               <Card key={event.id} className="overflow-hidden hover:shadow-lg transition-shadow">
@@ -200,7 +213,7 @@ export default function EventsPage() {
       <section>
         <h2 className="text-3xl font-bold mb-8">{t("Past Events")}</h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {pastEvents.map((event) => (
+          {filterEvents(pastEvents).map((event) => (
             <Card key={event.id} className="overflow-hidden opacity-75 hover:opacity-100 transition-opacity">
               <div className="relative h-48">
                 <Image
