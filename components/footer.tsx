@@ -321,30 +321,29 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10 bg-black/20 relative z-10">
-        <div className="container px-6 md:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 max-w-6xl mx-auto" dir="ltr">
-            <div className="text-center md:text-left">
-              <p className="text-gray-400">
-                &copy; 2025 Gezira College of Technology.{" "}
-                {language === "ar" ? "جميع الحقوق محفوظة" : "All rights reserved"}.
-              </p>
+      
+            {/* Bottom Bar */}
+            <div className="border-t border-white/10 bg-black/20 relative z-10">
+              <div className="container px-6 md:px-8 py-6">
+                <div className="flex flex-col items-center justify-center min-h-[48px] gap-1 sm:gap-0">
+                  <p className="text-gray-400 text-center w-full">
+                    Copyright &copy; 2025 All rights reserved for{" "}
+                    <span className="text-blue-400 font-semibold">Gezira College of Technology.</span>
+                  </p>
+                  <p className="text-gray-400 text-center w-full text-sm">
+                    Designed and developed by{" "}
+                    <a
+                      href="https://omer-portfolio-tau.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-orange-400 font-semibold hover:underline transition-colors"
+                    >
+                      En. Omer Ahmed
+                    </a>
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="flex flex-nowrap items-center gap-6 text-sm text-gray-400 overflow-x-auto">
-              <Link href="/about" className="hover:text-blue-400 transition-colors">
-                {language === "ar" ? "سياسة الخصوصية" : "Privacy Policy"}
-              </Link>
-              <Link href="/about" className="hover:text-blue-400 transition-colors">
-                {language === "ar" ? "شروط الاستخدام" : "Terms of Use"}
-              </Link>
-              <Link href="/contact" className="hover:text-blue-400 transition-colors">
-                {language === "ar" ? "إمكانية الوصول" : "Accessibility"}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
     </footer>
   )
 }
