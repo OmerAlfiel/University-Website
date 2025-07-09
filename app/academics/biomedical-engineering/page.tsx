@@ -150,7 +150,7 @@ export default function BiomedicalEngineeringPage() {
               </Badge>
             </div>
             <Button size="lg" className="bg-white text-pink-700 hover:bg-pink-50 px-8 py-4 text-lg font-semibold">
-              <Link href="/contact">{language === "ar" ? "تقدم الآن" : "Apply Now"}</Link>
+              <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfIJmWAmq2XYel9WWkQo4_as_gFFV56Xdar5Tot7hmBZCl6Lw/viewform">{language === "ar" ? "تقدم الآن" : "Apply Now"}</Link>
             </Button>
           </div>
         </div>
@@ -386,7 +386,7 @@ export default function BiomedicalEngineeringPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button size="lg" className="bg-white text-pink-700 hover:bg-pink-50">
-                <Link href="/contact">{language === "ar" ? "تقدم الآن" : "Apply Now"}</Link>
+                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfIJmWAmq2XYel9WWkQo4_as_gFFV56Xdar5Tot7hmBZCl6Lw/viewform">{language === "ar" ? "تقدم الآن" : "Apply Now"}</Link>
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-pink-700">
                 <Link href="/contact">{language === "ar" ? "تواصل معنا" : "Contact Us"}</Link>

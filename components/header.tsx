@@ -476,7 +476,10 @@ export function Header() {
               asChild
               className="hidden md:flex bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 border border-blue-500/30"
             >
-              <Link href="/contact">{language === "ar" ? "تقدم الآن" : "Apply Now"}</Link>
+              <Link 
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfIJmWAmq2XYel9WWkQo4_as_gFFV56Xdar5Tot7hmBZCl6Lw/viewform">
+                {language === "ar" ? "تقدم الآن" : "Apply Now"}
+              </Link>
             </Button>
       
             {/* Mobile Navigation */}
@@ -581,7 +584,9 @@ export function Header() {
                     asChild
                     className={`bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-2xl mt-4 w-full ${language === "ar" ? "font-arabic text-[110%] font-semibold" : "font-semibold"}`}
                   >
-                    <Link href="/contact" onClick={() => setIsOpen(false)}>
+                    <Link
+                     href="https://docs.google.com/forms/d/e/1FAIpQLSfIJmWAmq2XYel9WWkQo4_as_gFFV56Xdar5Tot7hmBZCl6Lw/viewform" 
+                     onClick={() => setIsOpen(false)}>
                       {language === "ar" ? "تقدم الآن" : "Apply Now"}
                     </Link>
                   </Button>

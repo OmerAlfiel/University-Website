@@ -185,7 +185,9 @@ export default function BusinessAdministrationPage() {
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-purple-600 hover:bg-purple-700 px-6 md:px-8 py-3 md:py-4 rounded-xl">
+                  <link href="https://docs.google.com/forms/d/e/1FAIpQLSfIJmWAmq2XYel9WWkQo4_as_gFFV56Xdar5Tot7hmBZCl6Lw/viewform">
                   {language === "ar" ? "تقدم الآن" : "Apply Now"}
+                  </link>
                   <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Button>
                 <Button variant="outline" size="lg" className="px-6 md:px-8 py-3 md:py-4 rounded-xl bg-transparent">
@@ -405,7 +407,9 @@ export default function BusinessAdministrationPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" className="px-6 md:px-8 py-3 md:py-4 text-base md:text-lg rounded-xl">
+              <link href="https://docs.google.com/forms/d/e/1FAIpQLSfIJmWAmq2XYel9WWkQo4_as_gFFV56Xdar5Tot7hmBZCl6Lw/viewform">
               {language === "ar" ? "تقدم للبرنامج" : "Apply to Program"}
+              </link>
             </Button>
             <Button
               size="lg"

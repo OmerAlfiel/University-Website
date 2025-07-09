@@ -41,7 +41,7 @@ export default function MedicalRadiologicPage() {
               </Badge>
             </div>
             <Button size="lg" className="bg-white text-cyan-700 hover:bg-cyan-50 px-8 py-4 text-lg font-semibold">
-              <Link href="/contact">{language === "ar" ? "تقدم الآن" : "Apply Now"}</Link>
+              <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfIJmWAmq2XYel9WWkQo4_as_gFFV56Xdar5Tot7hmBZCl6Lw/viewform">{language === "ar" ? "تقدم الآن" : "Apply Now"}</Link>
             </Button>
           </div>
         </div>

@@ -201,7 +201,9 @@ export default function NursingPage() {
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-green-600 hover:bg-green-700 px-8 py-4 rounded-xl">
+                  <link href="https://docs.google.com/forms/d/e/1FAIpQLSfIJmWAmq2XYel9WWkQo4_as_gFFV56Xdar5Tot7hmBZCl6Lw/viewform">
                   {language === "ar" ? "تقدم الآن" : "Apply Now"}
+                  </link>
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <Button variant="outline" size="lg" className="px-8 py-4 rounded-xl bg-transparent">
@@ -457,7 +459,9 @@ export default function NursingPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" className="px-8 py-4 text-lg rounded-xl">
+              <link href="https://docs.google.com/forms/d/e/1FAIpQLSfIJmWAmq2XYel9WWkQo4_as_gFFV56Xdar5Tot7hmBZCl6Lw/viewform">
               {language === "ar" ? "تقدم للبرنامج" : "Apply to Program"}
+              </link>
             </Button>
             <Button
               size="lg"

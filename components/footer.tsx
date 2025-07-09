@@ -282,7 +282,7 @@ export function Footer() {
                 asChild
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-semibold"
               >
-                <Link href="/contact">
+                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfIJmWAmq2XYel9WWkQo4_as_gFFV56Xdar5Tot7hmBZCl6Lw/viewform">
                   {language === "ar" ? "تقدم الآن" : "Apply Now"}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

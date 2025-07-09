@@ -191,7 +191,7 @@ export default function EconomicSciencesPage() {
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-white text-orange-700 hover:bg-orange-50 px-8 py-4 text-lg font-semibold">
-                <Link href="/contact" className="flex items-center">
+                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfIJmWAmq2XYel9WWkQo4_as_gFFV56Xdar5Tot7hmBZCl6Lw/viewform" className="flex items-center">
                   {language === "ar" ? "تقدم الآن" : "Apply Now"}
                   <TrendingUp className="ml-2 h-5 w-5" />
                 </Link>
@@ -425,7 +425,7 @@ export default function EconomicSciencesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-white text-orange-600 hover:bg-orange-50 px-8 py-4 text-lg font-semibold">
-                <Link href="/contact">{language === "ar" ? "تقدم للبرنامج" : "Apply to Program"}</Link>
+                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfIJmWAmq2XYel9WWkQo4_as_gFFV56Xdar5Tot7hmBZCl6Lw/viewform">{language === "ar" ? "تقدم للبرنامج" : "Apply to Program"}</Link>
               </Button>
               <Button
                 size="lg"
