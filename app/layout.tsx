@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Gezira College of Technology",
   description: "Developing well-rounded graduates with essential academic, intellectual, and ethical qualities",
-    generator: 'Omer Ahmed'
+  generator: 'Omer Ahmed'
 }
 
 export default function RootLayout({
@@ -23,6 +23,18 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning>
       <head>
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6LQXFGMY6N"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-6LQXFGMY6N');
+            `,
+          }}
+        />
         <style>{`
           header.sticky {
             position: sticky;
