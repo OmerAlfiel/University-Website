@@ -12,6 +12,45 @@ interface AnimatedSectionProps {
   onAnimationEnd?: () => void
 }
 
+type AnimatedCounterProps = {
+  end: number
+  duration?: number // in ms
+  suffix?: string
+  start?: boolean
+}
+
+export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ end, duration = 700, suffix = "", start = true }) => {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!start) {
+      setCount(0)
+      return
+    }
+    let startVal = 0
+    const increment = end / (duration / 16)
+    const interval = setInterval(() => {
+      startVal += increment
+      if (startVal >= end) {
+        setCount(end)
+        clearInterval(interval)
+      } else {
+        setCount(Math.floor(startVal))
+      }
+    }, 16)
+    return () => clearInterval(interval)
+  }, [end, duration, start])
+
+
+
+  return (
+    <span>
+      {count}
+      {suffix}
+    </span>
+  )
+}
+
 export function AnimatedSection({ children, className = "", animation = "fade-up", delay = 0, onAnimationEnd }: AnimatedSectionProps) {
   const [isVisible, setIsVisible] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
