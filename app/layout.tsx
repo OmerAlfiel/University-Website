@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Gezira College of Technology",
   description: "Developing well-rounded graduates with essential academic, intellectual, and ethical qualities",
-    generator: 'v0.dev'
+    generator: 'Omer Ahmed'
 }
 
 export default function RootLayout({
@@ -31,6 +31,7 @@ export default function RootLayout({
             z-index: 100;
           }
         `}</style>
+        <link rel="icon" href="/logo-1.ico" />
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
