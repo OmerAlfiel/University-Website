@@ -21,8 +21,16 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+                  {
+        protocol: 'https',
+        hostname: 'googletagmanager.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 }
 
 export default nextConfig
+
+
