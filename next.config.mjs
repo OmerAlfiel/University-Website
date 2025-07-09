@@ -15,18 +15,6 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
-            {
-        protocol: 'https',
-        hostname: 'docs.google.com',
-        port: '',
-        pathname: '/**',
-      },
-                  {
-        protocol: 'https',
-        hostname: 'googletagmanager.com',
-        port: '',
-        pathname: '/**',
-      },
     ],
   },
 }
