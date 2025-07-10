@@ -191,7 +191,11 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="text-center lg:text-left" dir="ltr">
-            <h4 className="font-bold text-white mb-6 text-xl flex items-center justify-center lg:justify-start gap-2">
+            <h4
+              className={`font-bold text-white mb-6 text-xl flex items-center justify-center lg:justify-start gap-2 ${
+                language === "ar" ? "flex-row-reverse" : ""
+              }`}
+            >
               <Building className="h-5 w-5 text-blue-400" />
               {language === "ar" ? "روابط سريعة" : "Quick Links"}
             </h4>
@@ -210,7 +214,11 @@ export function Footer() {
 
           {/* Academic Programs */}
           <div className="text-center lg:text-left" dir="ltr">
-            <h4 className="font-bold text-white mb-6 text-xl flex items-center justify-center lg:justify-start gap-2">
+            <h4
+              className={`font-bold text-white mb-6 text-xl flex items-center justify-center lg:justify-start gap-2 ${
+                language === "ar" ? "flex-row-reverse" : ""
+              }`}
+            >
               <GraduationCap className="h-5 w-5 text-blue-400" />
               {language === "ar" ? "البرامج الأكاديمية" : "Academic Programs"}
             </h4>
@@ -229,49 +237,54 @@ export function Footer() {
 
           {/* Contact Info */}
           <div className="text-center lg:text-left" dir="ltr">
-            <h4 className="font-bold text-white mb-6 text-xl flex items-center justify-center lg:justify-start gap-2">
+            <h4
+              className={`font-bold text-white mb-6 text-xl flex items-center justify-center lg:justify-start gap-2 ${
+                language === "ar" ? "flex-row-reverse" : ""
+              }`}
+            >
               <Globe className="h-5 w-5 text-blue-400" />
               {language === "ar" ? "معلومات الاتصال" : "Contact Info"}
             </h4>
-
-            <div className="space-y-4">
-              <div className="flex items-start justify-center lg:justify-start gap-3">
-                <div className="h-8 w-8 bg-blue-600/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                  <MapPin className="h-4 w-4 text-blue-400" />
+            <div className="flex justify-center">
+              <div className="space-y-4">
+                <div className="flex items-start justify-start gap-3">
+                  <div className="h-8 w-8 bg-blue-600/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <MapPin className="h-4 w-4 text-blue-400" />
+                  </div>
+                  <div className="text-gray-300 text-sm flex-1 min-w-0 text-left">
+                    <p className="break-words">Gezira Island, Khartoum</p>
+                    <p className="break-words">Sudan, P.O. Box 12345</p>
+                  </div>
                 </div>
-                <div className="text-gray-300 text-sm flex-1 min-w-0 text-left">
-                  <p className="break-words">Gezira Island, Khartoum</p>
-                  <p className="break-words">Sudan, P.O. Box 12345</p>
+            
+                <div className="flex items-start justify-start gap-3">
+                  <div className="h-8 w-8 bg-blue-600/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <Phone className="h-4 w-4 text-blue-400" />
+                  </div>
+                  <div className="text-gray-300 text-sm flex-1 min-w-0 text-left">
+                    <p className="break-words">+249 123 456 789</p>
+                    <p className="break-words">+249 987 654 321</p>
+                  </div>
                 </div>
-              </div>
-
-              <div className="flex items-start justify-center lg:justify-start gap-3">
-                <div className="h-8 w-8 bg-blue-600/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                  <Phone className="h-4 w-4 text-blue-400" />
+            
+                <div className="flex items-start justify-start gap-3">
+                  <div className="h-8 w-8 bg-blue-600/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <Mail className="h-4 w-4 text-blue-400" />
+                  </div>
+                  <div className="text-gray-300 text-sm flex-1 min-w-0 text-left">
+                    <p className="break-words">info@gct.edu.sd</p>
+                    <p className="break-words">admissions@gct.edu.sd</p>
+                  </div>
                 </div>
-                <div className="text-gray-300 text-sm flex-1 min-w-0 text-left">
-                  <p className="break-words">+249 123 456 789</p>
-                  <p className="break-words">+249 987 654 321</p>
-                </div>
-              </div>
-
-              <div className="flex items-start justify-center lg:justify-start gap-3">
-                <div className="h-8 w-8 bg-blue-600/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                  <Mail className="h-4 w-4 text-blue-400" />
-                </div>
-                <div className="text-gray-300 text-sm flex-1 min-w-0 text-left">
-                  <p className="break-words">info@gct.edu.sd</p>
-                  <p className="break-words">admissions@gct.edu.sd</p>
-                </div>
-              </div>
-
-              <div className="flex items-start justify-center lg:justify-start gap-3">
-                <div className="h-8 w-8 bg-blue-600/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                  <Clock className="h-4 w-4 text-blue-400" />
-                </div>
-                <div className="text-gray-300 text-sm flex-1 min-w-0 text-left">
-                  <p className="break-words">{language === "ar" ? "الأحد - الخميس" : "Sun - Thu"}</p>
-                  <p className="break-words">8:00 AM - 4:00 PM</p>
+            
+                <div className="flex items-start justify-start gap-3">
+                  <div className="h-8 w-8 bg-blue-600/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <Clock className="h-4 w-4 text-blue-400" />
+                  </div>
+                  <div className="text-gray-300 text-sm flex-1 min-w-0 text-left">
+                    <p className="break-words">{language === "ar" ? "الأحد - الخميس" : "Sun - Thu"}</p>
+                    <p className="break-words">8:00 AM - 4:00 PM</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -303,10 +316,10 @@ export function Footer() {
       <div className="border-t border-white/10 relative z-10">
         <div className="container px-6 md:px-8 py-8">
           <div className="max-w-4xl mx-auto">
-            <h4 className="font-bold text-white mb-4 text-center" dir="ltr">
+            <h4 className="font-bold text-white mb-4 text-center">
               {language === "ar" ? "الاعتمادات والشهادات" : "Accreditations & Certifications"}
             </h4>
-            <div className="flex flex-wrap justify-center gap-4" dir="ltr">
+            <div className="flex flex-wrap justify-center gap-4">
               {accreditations.map((accreditation, index) => (
                 <div
                   key={index}

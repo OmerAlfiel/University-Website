@@ -245,20 +245,20 @@ export default function InformationTechnologyPage() {
 									{language === "ar" ? "تحميل المنهج" : "Download Curriculum"}
 								</Button>
 							</div>
-							<div className="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
-								<div className="flex items-center gap-2">
-									<Clock className="h-4 w-4" />
-									{language === "ar" ? "4 سنوات" : "4 Years"}
-								</div>
-								<div className="flex items-center gap-2">
-									<Users className="h-4 w-4" />
-									{language === "ar" ? "340+ طالب" : "340+ Students"}
-								</div>
-								<div className="flex items-center gap-2">
-									<MapPin className="h-4 w-4" />
-									{language === "ar" ? "حرم الجامعة الرئيسي" : "Main Campus"}
-								</div>
-							</div>
+              <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm text-gray-600 dark:text-gray-400">
+                <div className="flex items-center gap-2">
+                  <Clock className="h-4 w-4" />
+                  {language === "ar" ? "4 سنوات" : "4 Years"}
+                </div>
+                <div className="flex items-center gap-2">
+                  <Users className="h-4 w-4" />
+                  {language === "ar" ? "120 ساعة معتمدة" : "120 Credit Hours"}
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  {language === "ar" ? "في الحرم الجامعي" : "On Campus"}
+                </div>
+              </div>
 						</div>
 						<div className="relative order-first lg:order-last">
 							<Image

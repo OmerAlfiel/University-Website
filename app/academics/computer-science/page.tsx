@@ -199,7 +199,7 @@ export default function ComputerSciencePage() {
                   {language === "ar" ? "تحميل المنهج" : "Download Curriculum"}
                 </Button>
               </div>
-              <div className="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
+              <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm text-gray-600 dark:text-gray-400">
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4" />
                   {language === "ar" ? "4 سنوات" : "4 Years"}
