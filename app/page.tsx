@@ -96,7 +96,7 @@ const academicHighlights = [
       excerpt:
         "New collaboration agreement enables student exchange programs and joint research initiatives in biomedical engineering.",
       excerptAr: "اتفاقية تعاون جديدة تمكن برامج تبادل الطلاب ومبادرات البحث المشتركة في الهندسة الطبية الحيوية.",
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      image: "https://images.unsplash.com/photo-1503676382389-4809596d5290?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       category: "Partnership",
       categoryAr: "شراكة",
     },
